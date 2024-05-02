@@ -3,6 +3,7 @@ import { styles } from '../styles';
 export default function Header() {
     return (
         <View>
+            <Text style={styles.h1}>Rompez avec la routine!</Text>
             <Text style={styles.h1}>Hello Mystifolie !</Text>
         </View>
     )
