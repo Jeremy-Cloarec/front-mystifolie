@@ -1,5 +1,8 @@
 {
   "expo": {
+    "experiments": {
+      "tsconfigPaths": true
+    },
     "name": "front-mystifolie",
     "slug": "front-mystifolie",
     "version": "1.0.0",
