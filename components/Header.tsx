@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native';
-import { styles } from '../styles';
+import { mainStyle } from '../mainStyles';
 export default function Header() {
     return (
         <View>
-            <Text style={styles.h1}>Rompez avec la routine!</Text>
-            <Text style={styles.h1}>Hello Mystifolie !</Text>
+            <Text style={mainStyle.h1}>Rompez avec la routine!</Text>
         </View>
+
     )
 }
