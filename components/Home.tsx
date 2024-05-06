@@ -23,6 +23,7 @@ export default function Home() {
                 <ButtonCard name="Vos activités" />
                 <ButtonCard name="Offrez une boite mystère" />
                 <ButtonCard name="Nos partenaires" />
+                <ButtonCard name="Test deploy" />
             </View>
         </View>
     )

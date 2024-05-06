@@ -1,0 +1,11 @@
+Create a build
+npx expo export -p web
+
+Serve locally
+npx serve dist --single
+
+Install netlify cli
+npm install -g netlify-cli
+
+Deploy
+netlify deploy --dir dist
