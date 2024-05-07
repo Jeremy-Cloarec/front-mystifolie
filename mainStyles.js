@@ -7,14 +7,23 @@ export const mainStyle = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+
+    },
+    subContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: "100%",
+        maxWidth:800,
+        padding:25,
+        flex: 1,
+        backgroundColor: 'green',
     },
     h1: {
         fontSize: 32,
         fontWeight: 'bold',
     },
     text: {
-        fontSize: 24,
-        fontWeight: 'bold',
+        fontSize: 20,
     },
 
     // Color
