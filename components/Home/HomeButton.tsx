@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, Pressable } from 'react-native';
-import { mainStyle } from '../mainStyles';
+import { mainStyle } from '../../mainStyles';
 
 const styles = StyleSheet.create({
     homeButton: {
-        paddingHorizontal: 10,
-        paddingVertical: 32,
+        paddingHorizontal: 12,
+        paddingVertical: 12,
         borderRadius: 10,
         flex: 1,
         maxWidth: "100%",
@@ -13,21 +13,24 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         textAlign: "center",
         marginVertical: 6,
-        marginHorizontal: 6
+        marginHorizontal: 6,
+        height: 120,
     },
     homeText: {
         textAlign: "center",
     }
 });
 
-type ContentProps = {
+type Props = {
     name: string;
+    backC?: any;
+    colo?: any;
 }
 
-export default function HomeButton(props: ContentProps) {
+export default function HomeButton(props: Props) {
     return (
-        <Pressable style={[mainStyle.bgViolet1, styles.homeButton]}>
-            <Text style={[mainStyle.colorWhite, mainStyle.text, styles.homeText]}>{props.name}</Text>
+        <Pressable style={[mainStyle.bgViolet4, styles.homeButton, props.backC]}>
+            <Text style={[mainStyle.colorDark, mainStyle.text, styles.homeText, props.colo]}>{props.name}</Text>
         </Pressable>
     )
 }

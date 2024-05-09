@@ -1,5 +1,5 @@
 import { View, StyleSheet, FlatList, SafeAreaView } from 'react-native';
-import { mainStyle } from '../mainStyles';
+import { mainStyle } from '../../mainStyles';
 import Header from './Header';
 import HomeButton from './HomeButton';
 
@@ -21,13 +21,11 @@ const itemData = [
 const styles = StyleSheet.create({
     containerButtonCard: {
         width: "100%",
-        backgroundColor:"black",
-        flexGrow: 0.5,
+        flexGrow: 1,
     },
     containerContainerB: {
-        flex:1,
+        flex: 1,
         width: "100%",
-        backgroundColor:"blue",
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -48,14 +46,16 @@ export default function Home() {
                     <FlatList
                         data={itemData}
                         numColumns={2}
-                        renderItem={({ item }) => <HomeButton name={item.name} />}
+                        renderItem={({ item, index }) => <HomeButton
+                            name={item.name}
+                            backC={index === 0 ? mainStyle.bgViolet1 : null}
+                            colo={index === 0 ? mainStyle.colorWhite : null}
+                        />}
                         keyExtractor={item => item.name}
-                        style = {styles.containerButtonCard}
-                        
+                        style={styles.containerButtonCard}
                     >
                     </FlatList>
                 </View>
-
             </View>
         </SafeAreaView>
     )

@@ -16,7 +16,6 @@ export const mainStyle = StyleSheet.create({
         maxWidth:800,
         padding:25,
         flex: 1,
-        backgroundColor: 'green',
     },
     h1: {
         fontSize: 32,

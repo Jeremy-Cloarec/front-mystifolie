@@ -1,6 +1,4 @@
-import { View, Text } from 'react-native';
-import { styles } from 'mainStyles';
-import Home from 'components/Home';
+import Home from 'components/Home/Home';
 export default function HomeScreen() {
     return (
         <Home />
