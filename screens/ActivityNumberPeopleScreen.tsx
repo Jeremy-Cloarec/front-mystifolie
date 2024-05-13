@@ -1,4 +1,4 @@
-import ActivityNumberPeople from "components/GenerateActivity/ActivityNumberPeople";
+import ActivityNumberPeople from "../components/GenerateActivity/ActivityNumberPeople";
 
 export default function ActivityNumberPeopleScreen() {
     return (

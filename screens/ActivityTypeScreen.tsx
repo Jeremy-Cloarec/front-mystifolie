@@ -1,4 +1,4 @@
-import ActivityType from 'components/GenerateActivity/ActivityType';
+import ActivityType from '../components/GenerateActivity/ActivityType';
 
 export default function ActivityTypeScreen() {
     return (
