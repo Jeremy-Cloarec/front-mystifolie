@@ -1,7 +1,7 @@
 import { View, StyleSheet, FlatList, SafeAreaView } from 'react-native';
 import { mainStyle } from '../../mainStyles';
 import Header from './Header';
-import HomeButton from './HomeButton';
+import HomeButton from '../Buttons/HomeButton';
 import { useNavigation } from '@react-navigation/native';
 
 const itemData = [

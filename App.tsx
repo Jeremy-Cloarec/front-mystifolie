@@ -21,7 +21,7 @@ export default function App() {
           <Stack.Screen
             name="Choisissez votre formule"
             component={ActivityFormuleScreen}
-            options={{ headerShown: true }}
+            options={{ headerShown: false }}
           />
         </Stack.Navigator>
       </NavigationContainer>
