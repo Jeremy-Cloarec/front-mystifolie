@@ -1,3 +1,4 @@
+import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
@@ -6,32 +7,54 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         justifyContent: 'center',
     },
-    elementStepper: {
+    containerStepper: {
         height: 10,
         flex: 1,
-        backgroundColor: 'blue'
+        flexDirection: 'row',
+        justifyContent: 'center',
+        gap: 10
+    },
+    elementStepper: {
+        flex: 1,
+        flexDirection: 'row',
+        backgroundColor: 'blue',
+        height: 10,
     },
     done: {
-        backgroundColor: 'green'
+        backgroundColor: '#08050C',
     },
     todo: {
-        backgroundColor: 'red'
+        backgroundColor: '#DDD6E4',
     },
     doing: {
-        backgroundColor: 'black'
-    }
+        backgroundColor: '#684889',
+    },
 })
 
 export type Props = {
     filtre: string,
-    nextFiltre: string
+    nextFiltre: string,
+    steps: { done: boolean, todo: boolean, doing: boolean }[]
+
 }
-export default function Stepper({ filtre, nextFiltre }: Props) {
+export default function Stepper({ filtre, nextFiltre, steps }: Props) {
     return (
         <View style={styles.stepper}>
             <View>
                 <Text>{filtre}</Text>
-                <View style={[styles.elementStepper, styles.doing, styles.done, styles.todo]}></View>
+                <View style={styles.containerStepper}>
+                    {steps.map((step, index) => (
+                        <View
+                            key={index}
+                            style={[
+                                styles.elementStepper,
+                                step.done && styles.done,
+                                step.todo && styles.todo,
+                                step.doing && styles.doing
+                            ]}
+                        />
+                    ))}
+                </View>
                 <Text>{nextFiltre}</Text>
             </View>
             <View>

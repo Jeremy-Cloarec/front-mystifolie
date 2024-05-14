@@ -1,3 +1,4 @@
+import React from 'react'
 import Navigation from '../Navigation/Navigation'
 import Stepper from '../Stepper/Stepper'
 import { Text, View, StyleSheet } from 'react-native'
@@ -12,15 +13,27 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'yellow'
-    }
+    },
 })
 
 export default function ActivityFormule() {
+    const steps = [
+        { done: false, todo: false, doing: true },
+        { done: false, todo: true, doing: false },
+        { done: false, todo: true, doing: false },
+        { done: false, todo: true, doing: false },
+        { done: false, todo: true, doing: false },
+        { done: false, todo: true, doing: false },
+        { done: false, todo: true, doing: false },
+        { done: false, todo: true, doing: false },
+        { done: false, todo: true, doing: false },
+    ];
     return (
         <SafeAreaView style={styles.container}>
             <Stepper
                 filtre="1/9 : Choisissez votre activité"
-                nextFiltre="Prochain : Avez-vous un événement à fêter ? "/>
+                nextFiltre="Prochain : Avez-vous un événement à fêter ? "
+                steps={steps} />
             <View style={styles.body}>
                 <Text>Body</Text>
             </View>

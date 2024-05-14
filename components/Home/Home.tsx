@@ -1,3 +1,4 @@
+import React from 'react'
 import { View, StyleSheet, FlatList, SafeAreaView } from 'react-native';
 import { mainStyle } from '../../mainStyles';
 import Header from './Header';
