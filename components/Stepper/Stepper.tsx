@@ -1,8 +1,8 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image, Pressable } from 'react-native'
 import { mainStyle } from 'mainStyles'
-import { useNavigation, NavigationProp } from '@react-navigation/native'
-import { RootStackParamList } from 'types/navigation'
+import { useNavigation } from '@react-navigation/native'
+import { NavigationProp } from 'types/navigation'
 
 const styles = StyleSheet.create({
     stepper: {
@@ -67,10 +67,12 @@ const styles = StyleSheet.create({
 export type Props = {
     steps: { done: boolean, todo: boolean, doing: boolean }[]
     indexArray: number,
-    stepsData: { filtre: string, nextFiltre: string }[]
+    stepsData: { filtre: string, nextFiltre: string | null }[]
 }
 export default function Stepper({ steps, stepsData, indexArray }: Props) {
-    const navigation = useNavigation<NavigationProp<RootStackParamList>>();    return (
+    const navigation = useNavigation<NavigationProp>();    
+    
+    return (
         <View style={[styles.stepper, mainStyle.bgViolet1]}>
             <View style={[styles.containerStepper]}>
                 <View style={styles.containerFilter}>
@@ -97,7 +99,7 @@ export default function Stepper({ steps, stepsData, indexArray }: Props) {
             </View>
             <Pressable
                 style={styles.containerImage}
-                onPress={() => navigation.navigate('Home')}
+                onPress={() => navigation.popToTop()}
             >
                 <Image
                     style={styles.image}

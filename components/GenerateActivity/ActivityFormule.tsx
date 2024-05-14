@@ -5,6 +5,9 @@ import { Text, View, StyleSheet } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { dataStepper } from '../Stepper/dataStepper'
 import { mainStyle } from 'mainStyles'
+import { useNavigation, NavigationProp } from '@react-navigation/native'
+import { RootStackParamList } from 'types/navigation'
+
 
 const steps = [
     { todo: false, doing: true, done: false },
@@ -33,6 +36,7 @@ const styles = StyleSheet.create({
 
 export default function ActivityFormule() {
     const insets = useSafeAreaInsets();
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
     return (
         <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
@@ -41,9 +45,9 @@ export default function ActivityFormule() {
                 stepsData={stepsData}
                 indexArray={0} />
             <View style={[styles.body, mainStyle.bgOrange5 ]}>
-                <Text >Body</Text>
+                <Text >Choississez votre formule</Text>
             </View>
-            <Navigation />
+            <Navigation navigationNext={() => navigation.navigate("Choisissez votre type d'activité")} />
         </View>
     )
 }

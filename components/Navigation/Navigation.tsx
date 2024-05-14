@@ -1,18 +1,47 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Pressable, Image } from 'react-native'
+import { mainStyle } from 'mainStyles';
+import { useNavigation, NavigationProp } from '@react-navigation/native'
+import { RootStackParamList } from 'types/navigation'
+import { NavigationProps } from 'types/navigation'
 
 const styles = StyleSheet.create({
-    navigation : {
-        height: 50,
-        justifyContent: 'center',
+    navigation: {
+        height: 70,
+        justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: 'blue'
+        flexDirection: 'row',
+    },
+    navigationPressable: {
+        paddingHorizontal: 16,
+        flexDirection: 'row',
+        gap: 12,
+        alignItems: 'center',
+    },
+    iconPressable: {
+        width: 10,
+        objectFit: 'contain',
     }
 })
-export default function Navigation() {
+export default function Navigation({ navigationNext }: NavigationProps) {
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
     return (
-        <View style={styles.navigation}>
-            <Text>Navigation</Text>
+        <View style={[styles.navigation, mainStyle.bgViolet1]}>
+            <Pressable
+                style={styles.navigationPressable}
+                onPress={() => navigation.goBack()}
+            >
+                <Image style={styles.iconPressable} source={require('../../assets/icons/back.png')} />
+                <Text style={mainStyle.colorWhite}>Retour</Text>
+            </Pressable>
+            <Pressable
+                onPress={navigationNext}
+                style={styles.navigationPressable}
+            >
+                <Text style={mainStyle.colorWhite}>Suivant</Text>
+                <Image style={styles.iconPressable} source={require('../../assets/icons/next.png')} />
+            </Pressable>
         </View>
     )
 }
