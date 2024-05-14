@@ -1,15 +1,15 @@
 export const dataStepper = [
     {
-        filtre: '1/9 : Choisissez votre activité',
+        filtre: '1/9 : Choisissez votre formule',
         nextFiltre: 'Prochain : Avez-vous un événement à fêter ? ',
     },
     {
         filtre: '2/9 : Choisissez votre activité',
-        nextFiltre: 'Prochain : Avez-vous un événement à fêter ? ',
+        nextFiltre: 'Prochain2 : Avez-vous un événement à fêter ? ',
     },
     {
         filtre: '3/9 : Choisissez votre activité',
-        nextFiltre: 'Prochain : Avez-vous un événement à fêter ? ',
+        nextFiltre: 'Prochain3 : Avez-vous un événement à fêter ? ',
     },
     {
         filtre: '4/9 : Choisissez votre activité',

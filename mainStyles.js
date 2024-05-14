@@ -21,6 +21,13 @@ export const mainStyle = StyleSheet.create({
         fontSize: 32,
         fontWeight: 'bold',
     },
+    filterText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    filterNextText: {
+        fontSize: 14,
+    },
     text: {
         fontSize: 20,
     },
@@ -75,5 +82,8 @@ export const mainStyle = StyleSheet.create({
     },
     bgViolet6: {
         backgroundColor: '#EEEAF1'
+    },
+    bgOrange5: {
+        backgroundColor: '#FFF7F4'
     },
 });

@@ -1,60 +1,80 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import { dataStepper } from './dataStepper'
+import { View, Text, StyleSheet, Image, Pressable } from 'react-native'
+import { mainStyle } from 'mainStyles'
+import { useNavigation, NavigationProp } from '@react-navigation/native'
+import { RootStackParamList } from 'types/navigation'
 
 const styles = StyleSheet.create({
     stepper: {
-        height: 60,
+        height: 100,
         flexDirection: 'row',
         justifyContent: 'center',
-        paddingHorizontal:20,
+        paddingLeft: 16,
+        paddingTop: 5,
     },
     containerStepper: {
         justifyContent: "center",
-        width: "100%",
+        flex: 5,
     },
     containerFilter: {
         flex: 1,
+        justifyContent: "center",
     },
     containerElement: {
-        height: 10,
-        flex: 1,
+        height: 8,
         flexDirection: 'row',
         justifyContent: 'center',
-        gap: 10,
+        alignItems: 'center',
+        gap: 4,
     },
     elementStepper: {
         flex: 1,
         flexDirection: 'row',
-        height: 10,
+        height: 8,
     },
     containerNextFilter: {
         flex: 1,
+        justifyContent: "center",
+    },
+    containerImage: {
+        justifyContent: "center",
+        alignItems: 'center',
+        flex: 1
+    },
+    image: {
+        width: 18,
+        height: 18,
+    },
+    firstElement: {
+        borderTopLeftRadius: 5,
+        borderBottomLeftRadius: 5,
+    },
+    lastElement: {
+        borderTopRightRadius: 5,
+        borderBottomRightRadius: 5,
     },
     done: {
-        backgroundColor: '#08050C',
+        backgroundColor: '#FFFFFF',
     },
     todo: {
-        backgroundColor: '#DDD6E4',
+        backgroundColor: '#684889',
     },
     doing: {
-        backgroundColor: '#684889',
+        backgroundColor: '#CCC2D7',
     },
 })
 
 export type Props = {
-    nextFiltre: string,
     steps: { done: boolean, todo: boolean, doing: boolean }[]
+    indexArray: number,
+    stepsData: { filtre: string, nextFiltre: string }[]
 }
-export default function Stepper({ nextFiltre, steps }: Props) {
-    const stepsData = dataStepper
-    return (
-        <View style={styles.stepper}>
-            <View style={styles.containerStepper}>
+export default function Stepper({ steps, stepsData, indexArray }: Props) {
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();    return (
+        <View style={[styles.stepper, mainStyle.bgViolet1]}>
+            <View style={[styles.containerStepper]}>
                 <View style={styles.containerFilter}>
-                    {stepsData.map((step, index) => (
-                        < Text key={index}>{step.filtre && index === 0 ? step.filtre : ""}</Text>
-                    ))}
+                    <Text style={[mainStyle.filterText, mainStyle.colorWhite]}>{stepsData[indexArray].filtre}</Text>
                 </View>
                 <View style={styles.containerElement}>
                     {steps.map((step, index) => (
@@ -64,17 +84,26 @@ export default function Stepper({ nextFiltre, steps }: Props) {
                                 styles.elementStepper,
                                 step.done && styles.done,
                                 step.todo && styles.todo,
-                                step.doing && styles.doing
+                                step.doing && styles.doing,
+                                index === 0 && styles.firstElement,
+                                index === steps.length - 1 && styles.lastElement
                             ]}
                         />
                     ))}
                 </View>
                 <View style={styles.containerNextFilter}>
-                    <Text>{nextFiltre}</Text>
+                    <Text style={[mainStyle.filterNextText, mainStyle.colorWhite]}>{stepsData[indexArray].nextFiltre}</Text>
                 </View>
             </View>
-            <View>
-            </View>
+            <Pressable
+                style={styles.containerImage}
+                onPress={() => navigation.navigate('Home')}
+            >
+                <Image
+                    style={styles.image}
+                    source={require('../../assets/icons/close.png')}
+                />
+            </Pressable>
         </View>
     )
 }
