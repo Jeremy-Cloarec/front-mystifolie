@@ -22,7 +22,7 @@ export const mainStyle = StyleSheet.create({
         fontWeight: 'bold',
     },
     filterText: {
-        fontSize: 20,
+        fontSize: 16,
         fontWeight: 'bold',
     },
     filterNextText: {

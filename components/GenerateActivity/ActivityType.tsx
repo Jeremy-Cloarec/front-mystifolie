@@ -8,11 +8,10 @@ import { mainStyle } from 'mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from 'types/navigation'
 
-
 const steps = [
     { todo: false, doing: false, done: true },
+    { todo: false, doing: false, done: true },
     { todo: false, doing: true, done: false },
-    { todo: true, doing: false, done: false },
     { todo: true, doing: false, done: false },
     { todo: true, doing: false, done: false },
     { todo: true, doing: false, done: false },
@@ -43,11 +42,11 @@ export default function ActivityFormule() {
             <Stepper 
                 steps={steps}
                 stepsData={stepsData}
-                indexArray={1} />
+                indexArray={2} />
             <View style={[styles.body, mainStyle.bgOrange5 ]}>
                 <Text >Choississez votre type d'activité</Text>
             </View>
-            <Navigation navigationNext={() => navigation.navigate("Choisissez votre type d'activité")} />
+            <Navigation navigationNext={() => navigation.navigate("Choisissez votre date")} />
         </View>
     )
 }

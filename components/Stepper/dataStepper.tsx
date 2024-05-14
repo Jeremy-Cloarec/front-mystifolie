@@ -21,10 +21,10 @@ export const dataStepper = [
     },
     {
         filtre: '6/9 : Où voulez-vous allez ?',
-        nextFiltre: 'Prochain : Connectez-vous',
+        nextFiltre: 'Prochain : Combien serez-vous ?',
     },
     {
-        filtre: '7/9 : Où voulez-vous allez ?',
+        filtre: '7/9 : Combien serez-vous ?',
         nextFiltre: 'Prochain : Connectez-vous',
     },
     {

@@ -3,7 +3,8 @@ import { View, StyleSheet, FlatList, SafeAreaView } from 'react-native';
 import { mainStyle } from '../../mainStyles';
 import Header from './Header';
 import HomeButton from '../Buttons/HomeButton';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, NavigationProp } from '@react-navigation/native'
+import { RootStackParamList } from 'types/navigation'
 
 const itemData = [
     {
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
 })
 
 export default function Home() {
-    const navigation = useNavigation();
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
     return (
         <SafeAreaView style={mainStyle.container}>
             <View style={mainStyle.subContainer} >
@@ -53,7 +54,7 @@ export default function Home() {
                             name={item.name}
                             backC={index === 0 ? mainStyle.bgViolet1 : null}
                             colo={index === 0 ? mainStyle.colorWhite : null}
-                            navigation={navigation}
+                            navigation={() => navigation.navigate("Choisissez votre formule")}
                         />}
                         keyExtractor={item => item.name}
                         style={styles.containerButtonCard}

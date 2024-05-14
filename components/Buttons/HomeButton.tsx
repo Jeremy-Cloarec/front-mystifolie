@@ -26,16 +26,16 @@ type Props = {
     name: string;
     backC?: any;
     colo?: any;
-    navigation: any;
+    navigation: () => void;
 }
 
 export default function HomeButton(props: Props) {
     const { navigation } = props;
     return (
-        <Pressable 
-        style={[mainStyle.bgViolet4, styles.homeButton, props.backC]}
-        onPress={() => navigation.navigate('Choisissez votre formule')}>
-        <Text style={[mainStyle.colorDark, mainStyle.text, styles.homeText, props.colo]}>{props.name}</Text>
-    </Pressable>
+        <Pressable
+            style={[mainStyle.bgViolet4, styles.homeButton, props.backC]}
+            onPress={navigation}>
+            <Text style={[mainStyle.colorDark, mainStyle.text, styles.homeText, props.colo]}>{props.name}</Text>
+        </Pressable>
     )
 }

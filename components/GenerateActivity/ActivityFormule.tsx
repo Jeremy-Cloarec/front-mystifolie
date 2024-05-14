@@ -47,7 +47,7 @@ export default function ActivityFormule() {
             <View style={[styles.body, mainStyle.bgOrange5 ]}>
                 <Text >Choississez votre formule</Text>
             </View>
-            <Navigation navigationNext={() => navigation.navigate("Choisissez votre type d'activité")} />
+            <Navigation navigationNext={() => navigation.navigate("Vous fêtez un événement ?")} />
         </View>
     )
 }

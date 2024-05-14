@@ -17,10 +17,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         gap: 12,
         alignItems: 'center',
+        height:"100%"
     },
     iconPressable: {
         width: 10,
-        objectFit: 'contain',
+        height:18,
     }
 })
 export default function Navigation({ navigationNext }: NavigationProps) {
