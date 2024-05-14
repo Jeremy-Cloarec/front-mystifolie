@@ -30,9 +30,7 @@ export default function ActivityFormule() {
     ];
     return (
         <SafeAreaView style={styles.container}>
-            <Stepper
-                filtre="1/9 : Choisissez votre activité"
-                nextFiltre="Prochain : Avez-vous un événement à fêter ? "
+            <Stepper nextFiltre="Prochain : Avez-vous un événement à fêter ? "
                 steps={steps} />
             <View style={styles.body}>
                 <Text>Body</Text>

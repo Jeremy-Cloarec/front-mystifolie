@@ -4,22 +4,32 @@ import { dataStepper } from './dataStepper'
 
 const styles = StyleSheet.create({
     stepper: {
-        height: 75,
-        paddingHorizontal: 20,
+        height: 60,
+        flexDirection: 'row',
         justifyContent: 'center',
+        paddingHorizontal:20,
     },
     containerStepper: {
+        justifyContent: "center",
+        width: "100%",
+    },
+    containerFilter: {
+        flex: 1,
+    },
+    containerElement: {
         height: 10,
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
-        gap: 10
+        gap: 10,
     },
     elementStepper: {
         flex: 1,
         flexDirection: 'row',
-        backgroundColor: 'blue',
         height: 10,
+    },
+    containerNextFilter: {
+        flex: 1,
     },
     done: {
         backgroundColor: '#08050C',
@@ -33,20 +43,20 @@ const styles = StyleSheet.create({
 })
 
 export type Props = {
-    filtre: string,
     nextFiltre: string,
     steps: { done: boolean, todo: boolean, doing: boolean }[]
-
 }
-export default function Stepper({ filtre, nextFiltre, steps }: Props) {
+export default function Stepper({ nextFiltre, steps }: Props) {
     const stepsData = dataStepper
     return (
         <View style={styles.stepper}>
-            <View>
-                {stepsData.map((step, index) => (
-                    < Text key={index}>{step.filtre && index === 0 ? step.filtre : ""}</Text>
-                ))}
-                <View style={styles.containerStepper}>
+            <View style={styles.containerStepper}>
+                <View style={styles.containerFilter}>
+                    {stepsData.map((step, index) => (
+                        < Text key={index}>{step.filtre && index === 0 ? step.filtre : ""}</Text>
+                    ))}
+                </View>
+                <View style={styles.containerElement}>
                     {steps.map((step, index) => (
                         <View
                             key={index}
@@ -59,7 +69,9 @@ export default function Stepper({ filtre, nextFiltre, steps }: Props) {
                         />
                     ))}
                 </View>
-                <Text>{nextFiltre}</Text>
+                <View style={styles.containerNextFilter}>
+                    <Text>{nextFiltre}</Text>
+                </View>
             </View>
             <View>
             </View>
