@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import { dataStepper } from './dataStepper'
 
 const styles = StyleSheet.create({
     stepper: {
@@ -38,10 +39,13 @@ export type Props = {
 
 }
 export default function Stepper({ filtre, nextFiltre, steps }: Props) {
+    const stepsData = dataStepper
     return (
         <View style={styles.stepper}>
             <View>
-                <Text>{filtre}</Text>
+                {stepsData.map((step, index) => (
+                    < Text key={index}>{step.filtre && index === 0 ? step.filtre : ""}</Text>
+                ))}
                 <View style={styles.containerStepper}>
                     {steps.map((step, index) => (
                         <View

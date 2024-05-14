@@ -18,15 +18,15 @@ const styles = StyleSheet.create({
 
 export default function ActivityFormule() {
     const steps = [
-        { done: false, todo: false, doing: true },
-        { done: false, todo: true, doing: false },
-        { done: false, todo: true, doing: false },
-        { done: false, todo: true, doing: false },
-        { done: false, todo: true, doing: false },
-        { done: false, todo: true, doing: false },
-        { done: false, todo: true, doing: false },
-        { done: false, todo: true, doing: false },
-        { done: false, todo: true, doing: false },
+        { todo: false, doing: true, done: false },
+        { todo: true, doing: false, done: false },
+        { todo: true, doing: false, done: false },
+        { todo: true, doing: false, done: false },
+        { todo: true, doing: false, done: false },
+        { todo: true, doing: false, done: false },
+        { todo: true, doing: false, done: false },
+        { todo: true, doing: false, done: false },
+        { todo: true, doing: false, done: false },
     ];
     return (
         <SafeAreaView style={styles.container}>
