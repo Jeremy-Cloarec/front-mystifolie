@@ -1,16 +1,24 @@
 import React from 'react'
-import {Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
 import { mainStyle } from '../../mainStyles';
 
 const styles = StyleSheet.create({
     h1: {
         textAlign: "center",
-    }
+    },
+    nowrap: {
+        flexDirection: "row",
+        flexWrap:"wrap",
+        justifyContent: "center",
+        alignItems: "center",
+    },
 
 })
 export default function Header() {
 
     return (
-        <Text style={[mainStyle.h1, styles.h1]}>Rompez avec la routine !</Text>
+        <View style={styles.nowrap}>
+            <Text style={[mainStyle.h1, styles.h1]}>Rompez avec </Text><Text style={[mainStyle.h1, styles.h1]}>la routine !</Text>
+        </View>
     )
 }

@@ -8,11 +8,11 @@ import HomeScreen from './screens/HomeScreen';
 import ActivityFormuleScreen from './screens/ActivityFormuleScreen';
 import ActivityTypeScreen from './screens/ActivityTypeScreen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import ActivityEventScreen from 'screens/ActivityEventScreen';
-import ActivityDateScreen from 'screens/ActivityDateScreen';
-import ActivityPriceScreen from 'screens/ActivityPriceScreen';
-import ActivityMapScreen from 'screens/ActivityMapScreen';
-import ActivityNumberPeopleScreen from 'screens/ActivityNumberPeopleScreen';
+import ActivityEventScreen from './screens/ActivityEventScreen';
+import ActivityDateScreen from './screens/ActivityDateScreen';
+import ActivityPriceScreen from './screens/ActivityPriceScreen';
+import ActivityMapScreen from './screens/ActivityMapScreen';
+import ActivityNumberPeopleScreen from './screens/ActivityNumberPeopleScreen';
 
 const Stack = createNativeStackNavigator();
 

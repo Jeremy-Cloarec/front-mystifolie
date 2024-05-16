@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image, Pressable } from 'react-native'
-import { mainStyle } from 'mainStyles'
+import { mainStyle } from '../../mainStyles'
 import { useNavigation } from '@react-navigation/native'
 import { NavigationProp } from 'types/navigation'
 
