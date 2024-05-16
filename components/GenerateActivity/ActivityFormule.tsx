@@ -6,7 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { dataStepper } from '../Stepper/dataStepper'
 import { mainStyle } from '../../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
-import { RootStackParamList } from 'types/navigation'
+import { RootStackParamList } from '../../types/navigation'
 
 
 const steps = [
