@@ -2,8 +2,8 @@ import React from 'react'
 import { View, Text, StyleSheet, Pressable, Image } from 'react-native'
 import { mainStyle } from '../../mainStyles';
 import { useNavigation, NavigationProp } from '@react-navigation/native'
-import { RootStackParamList } from 'types/navigation'
-import { NavigationProps } from 'types/navigation'
+import { RootStackParamList } from '../../types/navigation'
+import { NavigationProps } from '../../types/navigation'
 
 const styles = StyleSheet.create({
     navigation: {
@@ -17,11 +17,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         gap: 12,
         alignItems: 'center',
-        height:"100%"
+        height: "100%"
     },
     iconPressable: {
         width: 10,
-        height:18,
+        height: 18,
     }
 })
 export default function Navigation({ navigationNext }: NavigationProps) {

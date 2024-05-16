@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet, Image, Pressable } from 'react-native'
 import { mainStyle } from '../../mainStyles'
 import { useNavigation } from '@react-navigation/native'
-import { NavigationProp } from 'types/navigation'
+import { NavigationProp } from '../../types/navigation'
 
 const styles = StyleSheet.create({
     stepper: {
@@ -70,8 +70,8 @@ export type Props = {
     stepsData: { filtre: string, nextFiltre: string | null }[]
 }
 export default function Stepper({ steps, stepsData, indexArray }: Props) {
-    const navigation = useNavigation<NavigationProp>();    
-    
+    const navigation = useNavigation<NavigationProp>();
+
     return (
         <View style={[styles.stepper, mainStyle.bgViolet1]}>
             <View style={[styles.containerStepper]}>

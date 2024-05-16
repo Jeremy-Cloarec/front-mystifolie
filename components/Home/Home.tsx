@@ -4,7 +4,7 @@ import { mainStyle } from '../../mainStyles';
 import Header from './Header';
 import HomeButton from '../Buttons/HomeButton';
 import { useNavigation, NavigationProp } from '@react-navigation/native'
-import { RootStackParamList } from 'types/navigation'
+import { RootStackParamList } from '../../types/navigation'
 
 const itemData = [
     {

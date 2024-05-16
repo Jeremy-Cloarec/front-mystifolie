@@ -40,11 +40,11 @@ export default function ActivityEvent() {
 
     return (
         <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
-            <Stepper 
+            <Stepper
                 steps={steps}
                 stepsData={stepsData}
                 indexArray={1} />
-            <View style={[styles.body, mainStyle.bgOrange5 ]}>
+            <View style={[styles.body, mainStyle.bgOrange5]}>
                 <Text >Vous fêtez un événement ?</Text>
             </View>
             <Navigation navigationNext={() => navigation.navigate("Choisissez votre type d'activité")} />
