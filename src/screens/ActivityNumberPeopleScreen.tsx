@@ -1,21 +1,21 @@
 import React from 'react'
-import Navigation from '../Navigation/Navigation'
-import Stepper from '../Stepper/Stepper'
+import Navigation from '../../src/components/Navigation/Navigation'
+import Stepper from '../../src/components/Stepper/Stepper'
 import { Text, View, StyleSheet } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { dataStepper } from '../Stepper/dataStepper'
-import { mainStyle } from '../../mainStyles'
+import { dataStepper } from '../../src/components/Stepper/dataStepper'
+import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
-import { RootStackParamList } from '../../types/navigation'
+import { RootStackParamList } from '../types/navigation'
 
 const steps = [
     { todo: false, doing: false, done: true },
     { todo: false, doing: false, done: true },
     { todo: false, doing: false, done: true },
+    { todo: false, doing: false, done: true },
+    { todo: false, doing: false, done: true },
+    { todo: false, doing: false, done: true },
     { todo: false, doing: true, done: false },
-    { todo: true, doing: false, done: false },
-    { todo: true, doing: false, done: false },
-    { todo: true, doing: false, done: false },
     { todo: true, doing: false, done: false },
     { todo: true, doing: false, done: false },
 ];
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     }
 })
 
-export default function ActivityDate() {
+export default function ActivityNumberPeopleScreen() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
@@ -42,11 +42,11 @@ export default function ActivityDate() {
             <Stepper
                 steps={steps}
                 stepsData={stepsData}
-                indexArray={3} />
+                indexArray={6} />
             <View style={[styles.body, mainStyle.bgOrange5]}>
-                <Text >Choississez votre date</Text>
+                <Text >Combien serez-vous ?</Text>
             </View>
-            <Navigation navigationNext={() => navigation.navigate("Quel est votre fourchette de prix ?")} />
+            <Navigation navigationNext={() => navigation.navigate("Combien serez-vous ?")} />
         </View>
     )
 }

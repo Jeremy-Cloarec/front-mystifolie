@@ -1,12 +1,12 @@
 import React from 'react'
-import Navigation from '../Navigation/Navigation'
-import Stepper from '../Stepper/Stepper'
+import Navigation from '../../src/components/Navigation/Navigation'
+import Stepper from '../../src/components/Stepper/Stepper'
 import { Text, View, StyleSheet } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { dataStepper } from '../Stepper/dataStepper'
-import { mainStyle } from '../../mainStyles'
+import { dataStepper } from '../../src/components/Stepper/dataStepper'
+import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
-import { RootStackParamList } from '../../types/navigation'
+import { RootStackParamList } from '../types/navigation'
 
 
 const steps = [
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     }
 })
 
-export default function ActivityFormule() {
+export default function ActivityFormuleScreen() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 

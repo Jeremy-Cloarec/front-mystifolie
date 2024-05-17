@@ -1,21 +1,20 @@
 import React from 'react'
-import Navigation from '../Navigation/Navigation'
-import Stepper from '../Stepper/Stepper'
+import Navigation from '../../src/components/Navigation/Navigation'
+import Stepper from '../../src/components/Stepper/Stepper'
 import { Text, View, StyleSheet } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { dataStepper } from '../Stepper/dataStepper'
-import { mainStyle } from '../../mainStyles'
+import { dataStepper } from '../../src/components/Stepper/dataStepper'
+import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
-import { RootStackParamList } from '../../types/navigation'
-
+import { RootStackParamList } from '../types/navigation'
 
 const steps = [
     { todo: false, doing: false, done: true },
+    { todo: false, doing: false, done: true },
+    { todo: false, doing: false, done: true },
+    { todo: false, doing: false, done: true },
+    { todo: false, doing: false, done: true },
     { todo: false, doing: true, done: false },
-    { todo: true, doing: false, done: false },
-    { todo: true, doing: false, done: false },
-    { todo: true, doing: false, done: false },
-    { todo: true, doing: false, done: false },
     { todo: true, doing: false, done: false },
     { todo: true, doing: false, done: false },
     { todo: true, doing: false, done: false },
@@ -34,7 +33,7 @@ const styles = StyleSheet.create({
     }
 })
 
-export default function ActivityEvent() {
+export default function ActivityMapScreen() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
@@ -43,11 +42,11 @@ export default function ActivityEvent() {
             <Stepper
                 steps={steps}
                 stepsData={stepsData}
-                indexArray={1} />
+                indexArray={5} />
             <View style={[styles.body, mainStyle.bgOrange5]}>
-                <Text >Vous fêtez un événement ?</Text>
+                <Text >Où voulez-vous allez ?</Text>
             </View>
-            <Navigation navigationNext={() => navigation.navigate("Choisissez votre type d'activité")} />
+            <Navigation navigationNext={() => navigation.navigate("Combien serez-vous ?")} />
         </View>
     )
 }

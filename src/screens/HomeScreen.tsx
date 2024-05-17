@@ -1,10 +1,10 @@
 import React from 'react'
 import { View, StyleSheet, FlatList, SafeAreaView, Text } from 'react-native';
-import { mainStyle } from '../../mainStyles';
-import Header from './Header';
-import HomeButton from '../Buttons/HomeButton';
+import { mainStyle } from '../mainStyles';
+import Header from '../components/Home/Header';
+import HomeButton from '../components/Buttons/HomeButton';
 import { useNavigation, NavigationProp } from '@react-navigation/native'
-import { RootStackParamList } from '../../types/navigation'
+import { RootStackParamList } from '../types/navigation'
 // import { useFonts } from 'expo-font';
 // import * as SplashScreen from 'expo-splash-screen';
 // import { useCallback } from 'react';

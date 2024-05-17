@@ -4,15 +4,15 @@ import { NavigationContainer } from '@react-navigation/native';
 // import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from './screens/HomeScreen';
-import ActivityFormuleScreen from './screens/ActivityFormuleScreen';
-import ActivityTypeScreen from './screens/ActivityTypeScreen';
+import HomeScreen from './src/screens/HomeScreen';
+import ActivityFormuleScreen from './src/screens/ActivityFormuleScreen';
+import ActivityTypeScreen from './src/screens/ActivityTypeScreen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import ActivityEventScreen from './screens/ActivityEventScreen';
-import ActivityDateScreen from './screens/ActivityDateScreen';
-import ActivityPriceScreen from './screens/ActivityPriceScreen';
-import ActivityMapScreen from './screens/ActivityMapScreen';
-import ActivityNumberPeopleScreen from './screens/ActivityNumberPeopleScreen';
+import ActivityEventScreen from './src/screens/ActivityEventScreen';
+import ActivityDateScreen from './src/screens/ActivityDateScreen';
+import ActivityPriceScreen from './src/screens/ActivityPriceScreen';
+import ActivityMapScreen from './src/screens/ActivityMapScreen';
+import ActivityNumberPeopleScreen from './src/screens/ActivityNumberPeopleScreen';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 

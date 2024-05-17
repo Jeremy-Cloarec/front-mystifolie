@@ -103,7 +103,7 @@ export default function Stepper({ steps, stepsData, indexArray }: Props) {
             >
                 <Image
                     style={styles.image}
-                    source={require('../../assets/icons/close.png')}
+                    source={require('../../../assets/icons/close.png')}
                 />
             </Pressable>
         </View>

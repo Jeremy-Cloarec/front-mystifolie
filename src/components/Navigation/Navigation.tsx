@@ -33,7 +33,7 @@ export default function Navigation({ navigationNext }: NavigationProps) {
                 style={styles.navigationPressable}
                 onPress={() => navigation.goBack()}
             >
-                <Image style={styles.iconPressable} source={require('../../assets/icons/back.png')} />
+                <Image style={styles.iconPressable} source={require('../../../assets/icons/back.png')} />
                 <Text style={[mainStyle.colorWhite, mainStyle.utendoRegular]}>Retour</Text>
             </Pressable>
             <Pressable
@@ -41,7 +41,7 @@ export default function Navigation({ navigationNext }: NavigationProps) {
                 style={styles.navigationPressable}
             >
                 <Text style={[mainStyle.colorWhite, mainStyle.utendoRegular]}>Suivant</Text>
-                <Image style={styles.iconPressable} source={require('../../assets/icons/next.png')} />
+                <Image style={styles.iconPressable} source={require('../../../assets/icons/next.png')} />
             </Pressable>
         </View>
     )
