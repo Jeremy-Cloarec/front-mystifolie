@@ -7,6 +7,7 @@ import { dataStepper } from '../../src/components/Stepper/dataStepper'
 import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
+import ButtonValidateNavigation from 'src/components/Buttons/ButtonValidateNavigation';
 
 const steps = [
     { todo: false, doing: false, done: true },
@@ -30,6 +31,20 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    containerMainButton: {
+        paddingHorizontal: 16,
+        paddingVertical: 16,
+
+    },
+    containerMainContent: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+    containerButton: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        width: "100%",
     }
 })
 
@@ -42,11 +57,19 @@ export default function ActivityTypeScreen() {
             <Stepper
                 steps={steps}
                 stepsData={stepsData}
-                indexArray={2} />
-            <View style={[styles.body, mainStyle.bgOrange5]}>
-                <Text >Choississez votre type d'activité</Text>
+                indexArray={2}
+            />
+            <View style={[styles.body, mainStyle.bgOrange5, styles.containerMainButton]}>
+                <View style={styles.containerMainContent}>
+                    <Text>Choisissez votre activité</Text>
+                </View>
+                <View style={styles.containerButton}>
+                    <ButtonValidateNavigation
+                        name="Valider"
+                        navigation={() => navigation.navigate("Choisissez votre date")}
+                    />
+                </View>
             </View>
-            <Navigation navigationNext={() => navigation.navigate("Choisissez votre date")} />
         </View>
     )
 }

@@ -1,7 +1,5 @@
 import { StackNavigationProp } from '@react-navigation/stack';
 
-
-
 export type RootStackParamList = {
     "Home": undefined;
     "Choisissez votre formule": undefined;
@@ -18,5 +16,6 @@ export type RootStackParamList = {
 export type NavigationProp = StackNavigationProp<RootStackParamList>;
 
 export interface NavigationProps {
-    navigationNext: () => void;
+    navigationNext?: () => void;
+    navigationPrevious?: () => void;
 }

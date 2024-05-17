@@ -1,5 +1,4 @@
 import React from 'react'
-import Navigation from '../../src/components/Navigation/Navigation'
 import Stepper from '../../src/components/Stepper/Stepper'
 import { Text, View, StyleSheet } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -7,6 +6,7 @@ import { dataStepper } from '../../src/components/Stepper/dataStepper'
 import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
+import ButtonValidateNavigation from 'src/components/Buttons/ButtonValidateNavigation'
 
 
 const steps = [
@@ -31,6 +31,20 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    containerMainButton: {
+        paddingHorizontal: 16,
+        paddingVertical: 16,
+
+    },
+    containerMainContent: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+    containerButton: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        width: "100%",
     }
 })
 
@@ -43,11 +57,19 @@ export default function ActivityFormuleScreen() {
             <Stepper
                 steps={steps}
                 stepsData={stepsData}
-                indexArray={0} />
-            <View style={[styles.body, mainStyle.bgOrange5]}>
-                <Text >Choississez votre formule</Text>
+                indexArray={0}
+            />
+            <View style={[styles.body, mainStyle.bgOrange5, styles.containerMainButton]}>
+                <View style={styles.containerMainContent}>
+                    <Text>Choisissez votre formule</Text>
+                </View>
+                <View style={styles.containerButton}>
+                    <ButtonValidateNavigation
+                        name="Valider"
+                        navigation={() => navigation.navigate("Vous fêtez un événement ?")}
+                    />
+                </View>
             </View>
-            <Navigation navigationNext={() => navigation.navigate("Vous fêtez un événement ?")} />
         </View>
     )
 }

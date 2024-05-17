@@ -1,5 +1,3 @@
-import React from 'react'
-import Navigation from '../../src/components/Navigation/Navigation'
 import Stepper from '../../src/components/Stepper/Stepper'
 import { Text, View, StyleSheet } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -7,6 +5,7 @@ import { dataStepper } from '../../src/components/Stepper/dataStepper'
 import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
+import ButtonValidateNavigation from 'src/components/Buttons/ButtonValidateNavigation';
 
 
 const steps = [
@@ -31,6 +30,20 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    containerMainButton: {
+        paddingHorizontal: 16,
+        paddingVertical: 16,
+
+    },
+    containerMainContent: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+    containerButton: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        width: "100%",
     }
 })
 
@@ -43,11 +56,19 @@ export default function ActivityEventScreen() {
             <Stepper
                 steps={steps}
                 stepsData={stepsData}
-                indexArray={1} />
-            <View style={[styles.body, mainStyle.bgOrange5]}>
-                <Text >Vous fêtez un événement ?</Text>
+                indexArray={1}
+            />
+            <View style={[styles.body, mainStyle.bgOrange5, styles.containerMainButton]}>
+                <View style={styles.containerMainContent}>
+                    <Text>Evénement ?</Text>
+                </View>
+                <View style={styles.containerButton}>
+                    <ButtonValidateNavigation
+                        name="Valider"
+                        navigation={() => navigation.navigate("Choisissez votre type d'activité")}
+                    />
+                </View>
             </View>
-            <Navigation navigationNext={() => navigation.navigate("Choisissez votre type d'activité")} />
         </View>
     )
 }

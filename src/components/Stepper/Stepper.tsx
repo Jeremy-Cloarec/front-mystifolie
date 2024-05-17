@@ -1,15 +1,16 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image, Pressable } from 'react-native'
 import { mainStyle } from '../../mainStyles'
-import { useNavigation } from '@react-navigation/native'
-import { NavigationProp } from '../../types/navigation'
+import { useNavigation, NavigationProp } from '@react-navigation/native'
+import { RootStackParamList } from '../../types/navigation'
+import { NavigationProps } from '../../types/navigation'
 
 const styles = StyleSheet.create({
     stepper: {
         height: 100,
         flexDirection: 'row',
         justifyContent: 'center',
-        paddingLeft: 16,
+        paddingRight: 16,
         paddingTop: 5,
     },
     containerStepper: {
@@ -44,6 +45,7 @@ const styles = StyleSheet.create({
     image: {
         width: 18,
         height: 18,
+        opacity: 0.5
     },
     firstElement: {
         borderTopLeftRadius: 5,
@@ -70,10 +72,18 @@ export type Props = {
     stepsData: { filtre: string, nextFiltre: string | null }[]
 }
 export default function Stepper({ steps, stepsData, indexArray }: Props) {
-    const navigation = useNavigation<NavigationProp>();
-
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
     return (
         <View style={[styles.stepper, mainStyle.bgViolet1]}>
+            <Pressable
+                style={styles.containerImage}
+                onPress={() => navigation.goBack()}
+            >
+                <Image
+                    style={styles.image}
+                    source={require('../../../assets/icons/back.png')}
+                />
+            </Pressable>
             <View style={[styles.containerStepper]}>
                 <View style={styles.containerFilter}>
                     <Text style={[mainStyle.filterText, mainStyle.colorWhite, mainStyle.utendoRegular]}>{stepsData[indexArray].filtre}</Text>
@@ -97,15 +107,6 @@ export default function Stepper({ steps, stepsData, indexArray }: Props) {
                     <Text style={[mainStyle.filterNextText, mainStyle.colorWhite, mainStyle.utendoRegular]}>{stepsData[indexArray].nextFiltre}</Text>
                 </View>
             </View>
-            <Pressable
-                style={styles.containerImage}
-                onPress={() => navigation.popToTop()}
-            >
-                <Image
-                    style={styles.image}
-                    source={require('../../../assets/icons/close.png')}
-                />
-            </Pressable>
         </View>
     )
-}
+} 
