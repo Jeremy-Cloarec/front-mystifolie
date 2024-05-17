@@ -1,6 +1,6 @@
 import React from 'react'
-import { Text, StyleSheet, View, Image } from 'react-native';
-import { mainStyle } from '../../mainStyles';
+import { StyleSheet, Image } from 'react-native';
+
 
 const styles = StyleSheet.create({
     h1: {
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     },
     imageHeader: {
         flex:1,
-        width:400,
+        width:220,
         resizeMode:"contain",
     }
 
@@ -22,9 +22,6 @@ const styles = StyleSheet.create({
 export default function Header() {
 
     return (
-        // <View style={styles.nowrap}>
-        //     <Text style={[mainStyle.h1, styles.h1]}>Rompez avec </Text><Text style={[mainStyle.h1, styles.h1]}>la routine !</Text>
-        // </View>
-        <Image style={styles.imageHeader} source={require('../../assets/adaptive-icon.png')} />
+        <Image style={styles.imageHeader} source={require('../../assets/logoHeader.png')} />
     )
 }
