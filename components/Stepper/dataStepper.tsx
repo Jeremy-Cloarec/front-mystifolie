@@ -5,7 +5,7 @@ export const dataStepper = [
     },
     {
         filtre: '2/9 : Vous fêtez un événement ?',
-        nextFiltre: 'Prochain : Choisissez votre type d\’activté  ',
+        nextFiltre: 'Prochain : Choisissez votre type d\’activté ',
     },
     {
         filtre: '3/9 : Choisissez votre type d\'activité',
