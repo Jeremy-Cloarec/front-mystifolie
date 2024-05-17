@@ -1,9 +1,9 @@
 import React from 'react'
-import Navigation from '../../src/components/Navigation/Navigation'
-import Stepper from '../../src/components/Stepper/Stepper'
+import Navigation from '../components/Navigation/Navigation'
+import Stepper from '../components/Stepper/Stepper'
 import { Text, View, StyleSheet } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { dataStepper } from '../../src/components/Stepper/dataStepper'
+import { dataStepper } from '../components/Stepper/dataStepper'
 import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     }
 })
 
-export default function ActivityNumberPeopleScreen() {
+export default function InscriptionScreen() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
@@ -42,9 +42,10 @@ export default function ActivityNumberPeopleScreen() {
             <Stepper
                 steps={steps}
                 stepsData={stepsData}
-                indexArray={6} />
+                indexArray={6}
+            />
             <View style={[styles.body, mainStyle.bgOrange5]}>
-                <Text >Combien serez-vous ?</Text>
+                <Text>S'inscrire</Text>
             </View>
             <Navigation navigationNext={() => navigation.navigate("Combien serez-vous ?")} />
         </View>

@@ -12,9 +12,10 @@ import ActivityEventScreen from './src/screens/ActivityEventScreen';
 import ActivityDateScreen from './src/screens/ActivityDateScreen';
 import ActivityPriceScreen from './src/screens/ActivityPriceScreen';
 import ActivityMapScreen from './src/screens/ActivityMapScreen';
-import ActivityNumberPeopleScreen from './src/screens/ActivityNumberPeopleScreen';
+import ActivityNumberPeopleScreen from './src/screens/ConnexionInscriptionScreen';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import ConnnexionScreen from './src/screens/ConnexionInscriptionScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -78,16 +79,16 @@ export default function App() {
             component={ActivityNumberPeopleScreen}
             options={{ headerShown: false }}
           />
-          {/* <Stack.Screen
+          <Stack.Screen
             name="Connectez-vous ?"
-            component={}
+            component={ ConnnexionScreen}
             options={{ headerShown: false }}
           />
           <Stack.Screen
             name="Paiement ?"
             component={ActivityTypeScreen}
             options={{ headerShown: false }}
-          /> */}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
