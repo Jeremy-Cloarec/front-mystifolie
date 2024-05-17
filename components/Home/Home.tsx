@@ -1,10 +1,13 @@
 import React from 'react'
-import { View, StyleSheet, FlatList, SafeAreaView } from 'react-native';
+import { View, StyleSheet, FlatList, SafeAreaView, Text } from 'react-native';
 import { mainStyle } from '../../mainStyles';
 import Header from './Header';
 import HomeButton from '../Buttons/HomeButton';
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../../types/navigation'
+// import { useFonts } from 'expo-font';
+// import * as SplashScreen from 'expo-splash-screen';
+// import { useCallback } from 'react';
 
 const itemData = [
     {
@@ -40,6 +43,7 @@ const styles = StyleSheet.create({
 
 export default function Home() {
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
     return (
         <SafeAreaView style={mainStyle.container}>
             <View style={mainStyle.subContainer} >

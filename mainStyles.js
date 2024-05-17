@@ -13,8 +13,8 @@ export const mainStyle = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         width: "100%",
-        maxWidth:800,
-        padding:25,
+        maxWidth: 800,
+        padding: 25,
         flex: 1,
     },
     h1: {
@@ -30,6 +30,15 @@ export const mainStyle = StyleSheet.create({
     },
     text: {
         fontSize: 20,
+    },
+
+    // Typography
+    utendoRegular: {
+        fontFamily: 'Utendo-Regular',
+    },
+
+    utendoMedium: {
+        fontFamily: 'Utendo-Medium',
     },
 
     // Color
@@ -57,7 +66,7 @@ export const mainStyle = StyleSheet.create({
     colorViolet6: {
         color: '#EEEAF1',
     },
-    
+
     // Background-color
     bgDark: {
         color: '#08050C',

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 // import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -13,10 +13,27 @@ import ActivityDateScreen from './screens/ActivityDateScreen';
 import ActivityPriceScreen from './screens/ActivityPriceScreen';
 import ActivityMapScreen from './screens/ActivityMapScreen';
 import ActivityNumberPeopleScreen from './screens/ActivityNumberPeopleScreen';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [fontsLoaded, fontError] = useFonts({
+    'Utendo-Medium': require('./assets/typo/Utendo-Medium.ttf'),
+    'Utendo-Regular': require('./assets/typo/Utendo-Regular.ttf'),
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded || fontError) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded, fontError]);
+
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
+
   return (
     <SafeAreaProvider>
       <NavigationContainer>

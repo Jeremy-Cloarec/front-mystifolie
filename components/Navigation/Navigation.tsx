@@ -34,13 +34,13 @@ export default function Navigation({ navigationNext }: NavigationProps) {
                 onPress={() => navigation.goBack()}
             >
                 <Image style={styles.iconPressable} source={require('../../assets/icons/back.png')} />
-                <Text style={mainStyle.colorWhite}>Retour</Text>
+                <Text style={[mainStyle.colorWhite, mainStyle.utendoRegular]}>Retour</Text>
             </Pressable>
             <Pressable
                 onPress={navigationNext}
                 style={styles.navigationPressable}
             >
-                <Text style={mainStyle.colorWhite}>Suivant</Text>
+                <Text style={[mainStyle.colorWhite, mainStyle.utendoRegular]}>Suivant</Text>
                 <Image style={styles.iconPressable} source={require('../../assets/icons/next.png')} />
             </Pressable>
         </View>

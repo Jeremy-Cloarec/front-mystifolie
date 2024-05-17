@@ -35,7 +35,7 @@ export default function HomeButton(props: Props) {
         <Pressable
             style={[mainStyle.bgViolet4, styles.homeButton, props.backC]}
             onPress={navigation}>
-            <Text style={[mainStyle.colorDark, mainStyle.text, styles.homeText, props.colo]}>{props.name}</Text>
+            <Text style={[mainStyle.colorDark, mainStyle.text, styles.homeText, props.colo, mainStyle.utendoRegular]}>{props.name}</Text>
         </Pressable>
     )
 }

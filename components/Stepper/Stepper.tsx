@@ -76,7 +76,7 @@ export default function Stepper({ steps, stepsData, indexArray }: Props) {
         <View style={[styles.stepper, mainStyle.bgViolet1]}>
             <View style={[styles.containerStepper]}>
                 <View style={styles.containerFilter}>
-                    <Text style={[mainStyle.filterText, mainStyle.colorWhite]}>{stepsData[indexArray].filtre}</Text>
+                    <Text style={[mainStyle.filterText, mainStyle.colorWhite, mainStyle.utendoRegular]}>{stepsData[indexArray].filtre}</Text>
                 </View>
                 <View style={styles.containerElement}>
                     {steps.map((step, index) => (
@@ -94,7 +94,7 @@ export default function Stepper({ steps, stepsData, indexArray }: Props) {
                     ))}
                 </View>
                 <View style={styles.containerNextFilter}>
-                    <Text style={[mainStyle.filterNextText, mainStyle.colorWhite]}>{stepsData[indexArray].nextFiltre}</Text>
+                    <Text style={[mainStyle.filterNextText, mainStyle.colorWhite, mainStyle.utendoRegular]}>{stepsData[indexArray].nextFiltre}</Text>
                 </View>
             </View>
             <Pressable

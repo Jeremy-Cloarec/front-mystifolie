@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
 
 })
 export default function Header() {
-
     return (
         <Image style={styles.imageHeader} source={require('../../assets/logoHeader.png')} />
     )
