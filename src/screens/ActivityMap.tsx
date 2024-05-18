@@ -1,20 +1,20 @@
-import Stepper from '../../src/components/Stepper/Stepper'
+import React from 'react'
+import Stepper from '../components/Stepper/Stepper'
 import { Text, View, StyleSheet } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { dataStepper } from '../../src/components/Stepper/dataStepper'
+import { dataStepper } from '../components/Stepper/dataStepper'
 import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
-import ButtonValidateNavigation from 'src/components/Buttons/ButtonValidateNavigation';
-
+import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation'
 
 const steps = [
     { todo: false, doing: false, done: true },
+    { todo: false, doing: false, done: true },
+    { todo: false, doing: false, done: true },
+    { todo: false, doing: false, done: true },
+    { todo: false, doing: false, done: true },
     { todo: false, doing: true, done: false },
-    { todo: true, doing: false, done: false },
-    { todo: true, doing: false, done: false },
-    { todo: true, doing: false, done: false },
-    { todo: true, doing: false, done: false },
     { todo: true, doing: false, done: false },
     { todo: true, doing: false, done: false },
     { todo: true, doing: false, done: false },
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     }
 })
 
-export default function ActivityEventScreen() {
+export default function ActivityMapScreen() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
@@ -56,16 +56,16 @@ export default function ActivityEventScreen() {
             <Stepper
                 steps={steps}
                 stepsData={stepsData}
-                indexArray={1}
+                indexArray={5}
             />
             <View style={[styles.body, mainStyle.bgOrange5, styles.containerMainButton]}>
                 <View style={styles.containerMainContent}>
-                    <Text>Evénement ?</Text>
+                    <Text>Map</Text>
                 </View>
                 <View style={styles.containerButton}>
                     <ButtonValidateNavigation
                         name="Valider"
-                        navigation={() => navigation.navigate("Choisissez votre type d'activité")}
+                        navigation={() => navigation.navigate("Combien serez-vous ?")}
                     />
                 </View>
             </View>

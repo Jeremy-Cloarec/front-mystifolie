@@ -39,6 +39,7 @@ export default function ButtonValidateNavigation(props: Props) {
             <Text style={
                 [
                     mainStyle.colorWhite,
+                    mainStyle.utendoMedium,
                     styles.buttonText,
                     props.color,
                 ]

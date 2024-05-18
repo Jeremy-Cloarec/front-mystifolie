@@ -58,7 +58,7 @@ export default function Home() {
                             name={item.name}
                             backC={index === 0 ? mainStyle.bgViolet1 : null}
                             colo={index === 0 ? mainStyle.colorWhite : null}
-                            navigation={() => navigation.navigate("Choisissez votre formule")}
+                            navigation={() => navigation.navigate("Que souhaitez-vous faire ?")}
                         />}
                         keyExtractor={item => item.name}
                         style={styles.containerButtonCard}

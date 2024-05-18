@@ -1,21 +1,18 @@
 import React, { useCallback } from 'react';
-import { StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-// import { GestureHandlerRootView } from 'react-native-gesture-handler';
-
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './src/screens/HomeScreen';
-import ActivityFormuleScreen from './src/screens/ActivityFormuleScreen';
-import ActivityTypeScreen from './src/screens/ActivityTypeScreen';
+import ActivityFormuleScreen from './src/screens/ActivityFormule';
+import ActivityTypeScreen from './src/screens/ActivityType';
+import ActivityEventScreen from './src/screens/ActivityEvent';
+import ActivityDateScreen from './src/screens/ActivityDate';
+import ActivityPriceScreen from './src/screens/ActivityPrice';
+import ActivityMapScreen from './src/screens/ActivityMap';
+import ActivityNumberPeopleScreen from './src/screens/ActivityNumberPeople';
+import WhatDoYouWant from './src/screens/WhatDoYouWant';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import ActivityEventScreen from './src/screens/ActivityEventScreen';
-import ActivityDateScreen from './src/screens/ActivityDateScreen';
-import ActivityPriceScreen from './src/screens/ActivityPriceScreen';
-import ActivityMapScreen from './src/screens/ActivityMapScreen';
-import ActivityNumberPeopleScreen from './src/screens/ActivityNumberPeopleScreen';
 import { useFonts } from 'expo-font';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as SplashScreen from 'expo-splash-screen';
-import ConnnexionScreen from './src/screens/ActivityNumberPeopleScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -42,6 +39,11 @@ export default function App() {
           <Stack.Screen
             name="Home"
             component={HomeScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Que souhaitez-vous faire ?"
+            component={WhatDoYouWant}
             options={{ headerShown: false }}
           />
           <Stack.Screen
@@ -79,16 +81,11 @@ export default function App() {
             component={ActivityNumberPeopleScreen}
             options={{ headerShown: false }}
           />
-          {/* <Stack.Screen
-            name="Connectez-vous ?"
-            component={ ConnnexionScreen}
-            options={{ headerShown: false }}
-          />
           <Stack.Screen
             name="Paiement ?"
             component={ActivityTypeScreen}
             options={{ headerShown: false }}
-          /> */}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
