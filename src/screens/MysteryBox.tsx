@@ -36,6 +36,7 @@ const { ids, styles } = StyleSheet.create({
     containerMainContent: {
         flexGrow: 1,
         justifyContent: 'center',
+        alignItems: "center",
         width: "100%",
     },
     containerTwoButton: {
@@ -47,9 +48,8 @@ const { ids, styles } = StyleSheet.create({
     }
 })
 
-export default function Begin() {
+export default function MysteryBox() {
     const insets = useSafeAreaInsets();
-    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
     return (
         <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
@@ -58,11 +58,9 @@ export default function Begin() {
                 <View
                     style={styles.containerMainContent}
                     dataSet={{ media: ids.containerMainContent }}>
-                    <ButtonValidateNavigation
-                        name="Commencer"
-                        navigation={() => navigation.navigate('Choisissez votre formule')}
-                        backC={mainStyle.bgViolet4}
-                        color={mainStyle.colorDark}
+                    <Title 
+                        content="Boite mystère"
+                        color={mainStyle.colorWhite}
                     />
                 </View>
 

@@ -29,7 +29,7 @@ const { ids, styles } = StyleSheet.create({
             marginTop: 32,
             marginBottom: 32,
             borderRadius: 12,
-            maxWidth: 600,
+            maxWidth: 500,
             boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
         },
     },
@@ -41,10 +41,6 @@ const { ids, styles } = StyleSheet.create({
         flex: 1,
         width: "100%",
         gap: 12,
-        '@media (min-width: 768px)': {
-            paddingLeft: 8,
-            paddingRight: 8,
-        },
     },
     subContainerButtons: {
         flexDirection: 'row',
@@ -72,7 +68,7 @@ export default function WhatDoYouWant() {
                     >
                         <ButtonValidateNavigation
                             name="S'inscrire"
-                            navigation={() => navigation.navigate('Connection')}
+                            navigation={() => navigation.navigate('Inscription')}
                             backC={mainStyle.bgViolet4}
                             color={mainStyle.colorDark}
                         />
@@ -83,7 +79,7 @@ export default function WhatDoYouWant() {
                     >
                         <ButtonValidateNavigation
                             name="Se connecter"
-                            navigation={() => navigation.navigate('Inscription')}
+                            navigation={() => navigation.navigate('Connection')}
                         />
                     </View>
                 </View>

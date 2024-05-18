@@ -1,10 +1,11 @@
 import React from 'react'
-import { View, Text, StyleSheet, Pressable, Image } from 'react-native'
+import { View, Text, Pressable, Image } from 'react-native'
+import StyleSheet from 'react-native-media-query'
 import { mainStyle } from '../mainStyles';
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList, NavigationProps } from '../types/navigation'
 
-const styles = StyleSheet.create({
+const { ids, styles } = StyleSheet.create({
     navigation: {
         height: 50,
         justifyContent: 'center',
@@ -18,16 +19,22 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: "100%",
         width: "100%",
-        maxWidth: 1024,
+      
+        '@media (min-width: 768px)': {
+            maxWidth: 500,
+            paddingHorizontal: 16,
+        },
     },
     iconPressable: {
         width: 10,
         height: 18,
+        opacity: 0.8
     },
 
     textPressable: {    
         fontSize: 16,
         textAlign: 'center',
+        opacity: 0.8
     }
 })
 export default function NavigationBack() {
@@ -37,10 +44,11 @@ export default function NavigationBack() {
         <View style={[styles.navigation, mainStyle.bgViolet1]}>
             <Pressable
                 style={styles.navigationPressable}
+                dataSet={{ media: ids.navigationPressable }}
                 onPress={() => navigation.goBack()}
             >
                 <Image style={styles.iconPressable} source={require('../../assets/icons/back.png')} />
-                <Text style={[mainStyle.colorWhite, mainStyle.utendoRegular]}>Retour</Text>
+                <Text style={[mainStyle.colorWhite, mainStyle.utendoRegular, styles.textPressable]}>Retour</Text>
             </Pressable>
         </View>
     )

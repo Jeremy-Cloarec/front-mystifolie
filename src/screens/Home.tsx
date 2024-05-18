@@ -1,26 +1,32 @@
 import React from 'react'
 import { View, StyleSheet, FlatList, SafeAreaView, Text } from 'react-native';
-import { mainStyle } from '../mainStyles';
-import Header from '../components/Home/Header';
-import HomeButton from '../components/Buttons/HomeButton';
+import { mainStyle } from '../mainStyles'
+import Header from '../components/Home/Header'
+import HomeButton from '../components/Buttons/HomeButton'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
-// import { useFonts } from 'expo-font';
-// import * as SplashScreen from 'expo-splash-screen';
-// import { useCallback } from 'react';
 
-const itemData = [
+type ItemData = {
+    name: string;
+    link: keyof RootStackParamList;
+};
+
+const itemData: ItemData[] = [
     {
         name: "Créez votre activité mystère",
+        link: "Que souhaitez-vous faire ?"
     },
     {
         name: "Vos activités",
+        link: "Vos activités"
     },
     {
         name: "Offrez une boite mystère",
+        link: "Boite mystère"
     },
     {
         name: "Nos partenaires",
+        link: "Partnairs"
     },
 ]
 
@@ -54,12 +60,13 @@ export default function Home() {
                     <FlatList
                         data={itemData}
                         numColumns={2}
-                        renderItem={({ item, index }) => <HomeButton
-                            name={item.name}
-                            backC={index === 0 ? mainStyle.bgViolet1 : null}
-                            colo={index === 0 ? mainStyle.colorWhite : null}
-                            navigation={() => navigation.navigate("Que souhaitez-vous faire ?")}
-                        />}
+                        renderItem={({ item, index }) =>
+                            <HomeButton
+                                name={item.name}
+                                backC={index === 0 ? mainStyle.bgViolet1 : null}
+                                colo={index === 0 ? mainStyle.colorWhite : null}
+                                navigation={() => navigation.navigate(item.link)}
+                            />}
                         keyExtractor={item => item.name}
                         style={styles.containerButtonCard}
                     >

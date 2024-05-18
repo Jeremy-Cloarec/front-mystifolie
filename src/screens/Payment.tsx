@@ -13,12 +13,12 @@ import Title from '../components/Title'
 const steps = [
     { todo: false, doing: false, done: true },
     { todo: false, doing: false, done: true },
+    { todo: false, doing: false, done: true },
+    { todo: false, doing: false, done: true },
+    { todo: false, doing: false, done: true },
+    { todo: false, doing: false, done: true },
+    { todo: false, doing: false, done: true },
     { todo: true, doing: true, done: false },
-    { todo: true, doing: false, done: false },
-    { todo: true, doing: false, done: false },
-    { todo: true, doing: false, done: false },
-    { todo: true, doing: false, done: false },
-    { todo: true, doing: false, done: false },
 ];
 
 const stepsData = dataStepper
@@ -60,8 +60,7 @@ const { ids, styles } = StyleSheet.create({
     }
 })
 
-
-export default function ActivityFormuleScreen() {
+export default function Payment() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
@@ -70,14 +69,13 @@ export default function ActivityFormuleScreen() {
             <Stepper
                 steps={steps}
                 stepsData={stepsData}
-                indexArray={2}
+                indexArray={7}
             />
-
             <View style={[styles.body, mainStyle.bgOrange5, styles.containerMain]} dataSet={{ media: ids.containerMain }}>
                 <View
                     style={styles.containerMainContent}
                     dataSet={{ media: ids.containerMainContent }}>
-                    <Title content="Type"
+                    <Title content="Paiement"
                     />
                 </View>
                 <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
@@ -92,7 +90,7 @@ export default function ActivityFormuleScreen() {
                     >
                         <ButtonValidateNavigation
                             name="Valider"
-                            navigation={() => navigation.navigate('Choisissez votre date')}
+                            navigation={() => navigation.navigate('Votre activité')}
                         />
                     </View>
                 </View>

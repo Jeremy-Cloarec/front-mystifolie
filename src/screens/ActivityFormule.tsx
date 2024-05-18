@@ -1,17 +1,17 @@
 import React from 'react'
 import Stepper from '../components/Stepper/Stepper'
-import { Text, View, StyleSheet } from 'react-native'
+import { Text, View } from 'react-native'
+import StyleSheet from 'react-native-media-query'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { dataStepper } from '../components/Stepper/dataStepper'
 import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation'
-
+import Title from '../components/Title'
 
 const steps = [
     { todo: false, doing: true, done: false },
-    { todo: true, doing: false, done: false },
     { todo: true, doing: false, done: false },
     { todo: true, doing: false, done: false },
     { todo: true, doing: false, done: false },
@@ -23,7 +23,7 @@ const steps = [
 
 const stepsData = dataStepper
 
-const styles = StyleSheet.create({
+const { ids, styles } = StyleSheet.create({
     container: {
         flex: 1,
     },
@@ -31,23 +31,37 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: "red",
+        padding: 25,
     },
-    containerMainButton: {
+    containerMain: {
         paddingHorizontal: 16,
         paddingVertical: 16,
+        width: "100%",
+        margin: "auto",
+        '@media (min-width: 768px)': {
+            marginTop: 32,
+            marginBottom: 32,
+            borderRadius: 12,
+            maxWidth: 500,
+            boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+        },
     },
     containerMainContent: {
-        flex: 1,
+        flexGrow: 1,
         justifyContent: 'center',
     },
-    containerButton: {
-        flexDirection: 'row',
-        justifyContent: 'center',
+    containerTwoButton: {
         width: "100%",
+        gap: 12,
+    },
+    subContainerButtons: {
+        flexDirection: 'row',
     }
 })
 
-export default function ActivityFormuleScreen() {
+
+export default function ActivityFormule() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
@@ -58,15 +72,29 @@ export default function ActivityFormuleScreen() {
                 stepsData={stepsData}
                 indexArray={0}
             />
-            <View style={[styles.body, mainStyle.bgOrange5, styles.containerMainButton]}>
-                <View style={styles.containerMainContent}>
-                    <Text>Choisissez votre formule</Text>
-                </View>
-                <View style={styles.containerButton}>
-                    <ButtonValidateNavigation
-                        name="Valider"
-                        navigation={() => navigation.navigate("Vous fêtez un événement ?")}
+
+            <View style={[styles.body, mainStyle.bgOrange5, styles.containerMain]} dataSet={{ media: ids.containerMain }}>
+                <View
+                    style={styles.containerMainContent}
+                    dataSet={{ media: ids.containerMainContent }}>
+                    <Title content="Choisissez votre formule"
                     />
+                </View>
+                <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
+                >
+                    <View
+                        style={styles.subContainerButtons}
+                    >
+                    </View>
+                    <View
+                        style={styles.subContainerButtons}
+                        dataSet={{ media: ids.subContainerButtons }}
+                    >
+                        <ButtonValidateNavigation
+                            name="Valider"
+                            navigation={() => navigation.navigate('Vous fêtez un événement ?')}
+                        />
+                    </View>
                 </View>
             </View>
         </View>

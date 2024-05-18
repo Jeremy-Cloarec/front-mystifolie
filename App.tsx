@@ -1,18 +1,27 @@
 import React, { useCallback } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import HomeScreen from './src/screens/HomeScreen';
-import ActivityFormuleScreen from './src/screens/ActivityFormule';
-import ActivityTypeScreen from './src/screens/ActivityType';
-import ActivityEventScreen from './src/screens/ActivityEvent';
-import ActivityDateScreen from './src/screens/ActivityDate';
-import ActivityPriceScreen from './src/screens/ActivityPrice';
-import ActivityMapScreen from './src/screens/ActivityMap';
-import ActivityNumberPeopleScreen from './src/screens/ActivityNumberPeople';
+import Home from './src/screens/Home';
+import ActivityFormule from './src/screens/ActivityFormule';
+import ActivityType from './src/screens/ActivityType';
+import ActivityEvent from './src/screens/ActivityEvent';
+import ActivityDate from './src/screens/ActivityDate';
+import ActivityPrice from './src/screens/ActivityPrice';
+import ActivityMap from './src/screens/ActivityMap';
+import ActivityNumberPeople from './src/screens/ActivityNumberPeople';
 import WhatDoYouWant from './src/screens/WhatDoYouWant';
+import Inscription from './src/screens/Inscription';
+import Connexion from './src/screens/Connexion';
+import Begin from './src/screens/Begin';
+import Payment from './src/screens/Payment';
+import GenerateActivity from './src/screens/GenerateActivity';
+import Partnairs from './src/screens/Partnairs';
+
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as SplashScreen from 'expo-splash-screen';
+import YourActivities from 'src/screens/YourActivities';
+import MysteryBox from 'src/screens/MysteryBox';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,7 +47,7 @@ export default function App() {
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen
             name="Home"
-            component={HomeScreen}
+            component={Home}
             options={{ headerShown: false }}
           />
           <Stack.Screen
@@ -47,43 +56,78 @@ export default function App() {
             options={{ headerShown: false }}
           />
           <Stack.Screen
+            name="Inscription"
+            component={Inscription}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Connection"
+            component={Connexion}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
             name="Choisissez votre formule"
-            component={ActivityFormuleScreen}
+            component={ActivityFormule}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Commencer"
+            component={Begin}
             options={{ headerShown: false }}
           />
           <Stack.Screen
             name="Vous fêtez un événement ?"
-            component={ActivityEventScreen}
+            component={ActivityEvent}
             options={{ headerShown: false }}
           />
           <Stack.Screen
             name="Choisissez votre type d'activité"
-            component={ActivityTypeScreen}
+            component={ActivityType}
             options={{ headerShown: false }}
           />
           <Stack.Screen
             name="Choisissez votre date"
-            component={ActivityDateScreen}
+            component={ActivityDate}
             options={{ headerShown: false }}
           />
           <Stack.Screen
             name="Quel est votre fourchette de prix ?"
-            component={ActivityPriceScreen}
+            component={ActivityPrice}
             options={{ headerShown: false }}
           />
           <Stack.Screen
             name="Où voulez-vous allez ?"
-            component={ActivityMapScreen}
+            component={ActivityMap}
             options={{ headerShown: false }}
           />
           <Stack.Screen
             name="Combien serez-vous ?"
-            component={ActivityNumberPeopleScreen}
+            component={ActivityNumberPeople}
             options={{ headerShown: false }}
           />
           <Stack.Screen
-            name="Paiement ?"
-            component={ActivityTypeScreen}
+            name="Paiement"
+            component={Payment}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Votre activité"
+            component={GenerateActivity}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Vos activités"
+            component={YourActivities}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Boite mystère"
+            component={MysteryBox}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Partnairs"
+            component={Partnairs}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

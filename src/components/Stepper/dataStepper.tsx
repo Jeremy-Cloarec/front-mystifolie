@@ -13,7 +13,7 @@ export const dataStepper = [
     },
     {
         filtre: '4/8  : Choisissez votre date',
-        nextFiltre: 'Prochain : Où voulez-vous aller ?',
+        nextFiltre: 'Prochain : Quelle est votre fourchette de prix ?',
     },
     {
         filtre: '5/8  : Quel est votre fourchette de prix ?',
@@ -25,10 +25,10 @@ export const dataStepper = [
     },
     {
         filtre: '7/8  : Combien serez-vous ?',
-        nextFiltre: 'Prochain : Connectez-vous',
+        nextFiltre: 'Prochain : Paiement',
     },                               
     {
         filtre: '8 /8  : Paiement',
-        nextFiltre: null,
+        nextFiltre: 'Nous allons ensuite générer votre activité :)',
     },
 ]

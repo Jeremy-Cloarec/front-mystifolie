@@ -5,7 +5,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
-import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation';
 import NavigationBack from '../components/NavigationBack';
 import Title from '../components/Title';
 
@@ -36,6 +35,7 @@ const { ids, styles } = StyleSheet.create({
     containerMainContent: {
         flexGrow: 1,
         justifyContent: 'center',
+        alignItems: 'center',
         width: "100%",
     },
     containerTwoButton: {
@@ -47,7 +47,7 @@ const { ids, styles } = StyleSheet.create({
     }
 })
 
-export default function Begin() {
+export default function Partnairs() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
@@ -58,14 +58,11 @@ export default function Begin() {
                 <View
                     style={styles.containerMainContent}
                     dataSet={{ media: ids.containerMainContent }}>
-                    <ButtonValidateNavigation
-                        name="Commencer"
-                        navigation={() => navigation.navigate('Choisissez votre formule')}
-                        backC={mainStyle.bgViolet4}
-                        color={mainStyle.colorDark}
+                    <Title
+                        content="Nos partenaires"
+                        color={mainStyle.colorWhite}
                     />
                 </View>
-
             </View>
         </View>
     )

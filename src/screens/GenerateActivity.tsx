@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { View } from 'react-native'
 import StyleSheet from 'react-native-media-query'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { dataStepper } from '../components/Stepper/dataStepper'
 import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
-import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation';
-import NavigationBack from '../components/NavigationBack';
-import Title from '../components/Title';
+import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation'
+import Title from '../components/Title'
 
 const { ids, styles } = StyleSheet.create({
     container: {
@@ -36,7 +36,6 @@ const { ids, styles } = StyleSheet.create({
     containerMainContent: {
         flexGrow: 1,
         justifyContent: 'center',
-        width: "100%",
     },
     containerTwoButton: {
         width: "100%",
@@ -47,25 +46,36 @@ const { ids, styles } = StyleSheet.create({
     }
 })
 
-export default function Begin() {
+export default function GenerateActivity() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
     return (
         <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
-            <NavigationBack />
-            <View style={[styles.body, mainStyle.bgViolet1, styles.containerMain]} dataSet={{ media: ids.containerMain }}>
+
+            <View style={[styles.body, mainStyle.bgOrange5, styles.containerMain]} dataSet={{ media: ids.containerMain }}>
                 <View
                     style={styles.containerMainContent}
                     dataSet={{ media: ids.containerMainContent }}>
-                    <ButtonValidateNavigation
-                        name="Commencer"
-                        navigation={() => navigation.navigate('Choisissez votre formule')}
-                        backC={mainStyle.bgViolet4}
-                        color={mainStyle.colorDark}
+                    <Title content="Votre activité est prête !"
                     />
                 </View>
-
+                <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
+                >
+                    <View
+                        style={styles.subContainerButtons}
+                    >
+                    </View>
+                    <View
+                        style={styles.subContainerButtons}
+                        dataSet={{ media: ids.subContainerButtons }}
+                    >
+                        <ButtonValidateNavigation
+                            name="Accueil"
+                            navigation={() => navigation.navigate('Home')}
+                        />
+                    </View>
+                </View>
             </View>
         </View>
     )

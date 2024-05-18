@@ -3,8 +3,9 @@ import { StackNavigationProp } from '@react-navigation/stack';
 export type RootStackParamList = {
     "Home": undefined;
     "Que souhaitez-vous faire ?": undefined;
-    "Connection": undefined;
     "Inscription": undefined;
+    "Connection": undefined;
+    "Commencer": undefined;
     "Choisissez votre formule": undefined;
     "Vous fêtez un événement ?": undefined;
     "Choisissez votre type d'activité": undefined;
@@ -13,6 +14,10 @@ export type RootStackParamList = {
     "Où voulez-vous allez ?": undefined;
     "Combien serez-vous ?": undefined;
     "Paiement": undefined;
+    "Votre activité": undefined;
+    "Vos activités": undefined;
+    "Boite mystère": undefined;
+    "Partnairs": undefined;
 };
 
 export type NavigationProp = StackNavigationProp<RootStackParamList>;
