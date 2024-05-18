@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Text, View, StyleSheet, Dimensions } from 'react-native'
+import { View } from 'react-native'
+import StyleSheet from 'react-native-media-query'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
@@ -8,7 +9,7 @@ import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNaviga
 import NavigationBack from '../components/NavigationBack';
 import Title from '../components/Title';
 
-const styles = StyleSheet.create({
+const { ids, styles } = StyleSheet.create({
     container: {
         flex: 1,
     },
@@ -16,49 +17,59 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: "red",
+        padding: 25,
     },
     containerMain: {
-        // paddingHorizontal: 16,
+        paddingHorizontal: 16,
         paddingVertical: 16,
         width: "100%",
+        margin: "auto",
+        '@media (min-width: 768px)': {
+            marginTop: 32,
+            marginBottom: 32,
+            borderRadius: 12,
+            maxWidth: 600,
+            boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+        },
     },
     containerMainContent: {
         flexGrow: 0.8,
         justifyContent: 'center',
     },
-    containerButton: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        // width: "100%",
-    },
     containerTwoButton: {
-        gap:12,
         flex: 1,
         width: "100%",
-        maxWidth:900,
-        alignItems: 'center',
+        gap: 12,
+        '@media (min-width: 768px)': {
+            paddingLeft: 8,
+            paddingRight: 8,
+        },
+    },
+    subContainerButtons: {
+        flexDirection: 'row',
     }
 })
 
 export default function WhatDoYouWant() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-    const [screenWidth, setScreenWidth] = useState(Dimensions.get('window').width);
-
-    const margin = 62
-    const marginSide = margin/2 
-
-
 
     return (
         <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
             <NavigationBack />
-            <View style={[styles.body, mainStyle.bgOrange5, styles.containerMain]}>
-                <View style={styles.containerMainContent}>
-                    <Title content="Que souhaitez-vous faire ?" />
+            <View style={[styles.body, mainStyle.bgOrange5, styles.containerMain]} dataSet={{ media: ids.containerMain }}>
+                <View
+                    style={styles.containerMainContent}
+                    dataSet={{ media: ids.containerMainContent }}>
+                    <Title content="Que souhaitez-vous faire ?"
+                    />
                 </View>
-                <View style={styles.containerTwoButton}>
-                    <View style={[styles.containerButton, {width: screenWidth - marginSide}]}>
+                <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
+                >
+                    <View
+                        style={styles.subContainerButtons}
+                    >
                         <ButtonValidateNavigation
                             name="S'inscrire"
                             navigation={() => navigation.navigate('Connection')}
@@ -66,7 +77,10 @@ export default function WhatDoYouWant() {
                             color={mainStyle.colorDark}
                         />
                     </View>
-                    <View style={[styles.containerButton, {width: screenWidth - marginSide}]}>
+                    <View
+                        style={styles.subContainerButtons}
+                        dataSet={{ media: ids.subContainerButtons }}
+                    >
                         <ButtonValidateNavigation
                             name="Se connecter"
                             navigation={() => navigation.navigate('Inscription')}

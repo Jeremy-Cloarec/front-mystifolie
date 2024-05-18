@@ -1,16 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, Pressable } from 'react-native';
-import { mainStyle } from '../../mainStyles';
+import { Text, Pressable, StyleSheet } from 'react-native'
+import { mainStyle } from '../../mainStyles'
 
 
 const styles = StyleSheet.create({
     principalButton: {
-        flex: 1,
         paddingHorizontal: 16,
-        paddingVertical: 16,
+        paddingVertical: 18,
         alignItems: "center",
         borderRadius: 8,
-
+        flexDirection: "row",
+        justifyContent: "center",
+        width: "100%",
     },
     buttonText: {
         fontSize: 20

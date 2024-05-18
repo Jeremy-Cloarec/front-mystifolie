@@ -13,7 +13,7 @@ export const mainStyle = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         width: "100%",
-        maxWidth: 800,
+        maxWidth: 1024,
         padding: 25,
         flex: 1,
     },

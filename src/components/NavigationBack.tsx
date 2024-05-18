@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: "100%",
         width: "100%",
-        maxWidth: 900,
+        maxWidth: 1024,
     },
     iconPressable: {
         width: 10,
@@ -28,9 +28,7 @@ const styles = StyleSheet.create({
     textPressable: {    
         fontSize: 16,
         textAlign: 'center',
-
     }
-
 })
 export default function NavigationBack() {
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
