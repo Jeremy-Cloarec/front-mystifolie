@@ -15,13 +15,13 @@ import Begin from './src/screens/Begin';
 import Payment from './src/screens/Payment';
 import GenerateActivity from './src/screens/GenerateActivity';
 import Partnairs from './src/screens/Partnairs';
+import YourActivities from './src/screens/YourActivities';
+import MysteryBox from './src/screens/MysteryBox';
 
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as SplashScreen from 'expo-splash-screen';
-import YourActivities from 'src/screens/YourActivities';
-import MysteryBox from 'src/screens/MysteryBox';
 
 const Stack = createNativeStackNavigator();
 

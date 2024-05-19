@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import StyleSheet from 'react-native-media-query'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { mainStyle } from '../mainStyles'
@@ -7,7 +7,7 @@ import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation';
 import NavigationBack from '../components/NavigationBack';
-import Title from '../components/Title';
+import InputText from '../components/Input/InputText';
 
 const { ids, styles } = StyleSheet.create({
     container: {
@@ -17,7 +17,6 @@ const { ids, styles } = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "red",
         padding: 25,
     },
     containerMain: {
@@ -34,8 +33,9 @@ const { ids, styles } = StyleSheet.create({
         },
     },
     containerMainContent: {
-        flexGrow: 1,
+        flex: 1,
         justifyContent: 'center',
+        width: "100%",
     },
     containerTwoButton: {
         width: "100%",
@@ -43,12 +43,13 @@ const { ids, styles } = StyleSheet.create({
     },
     subContainerButtons: {
         flexDirection: 'row',
-    }
+    },
 })
 
 export default function Connexion() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+    const [text, onChangeText] = React.useState('');
 
     return (
         <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
@@ -57,14 +58,15 @@ export default function Connexion() {
                 <View
                     style={styles.containerMainContent}
                     dataSet={{ media: ids.containerMainContent }}>
-                    <Title content="Connection"/>
+                    <InputText 
+                        label="Votre email"
+                        placeholder="Entrez votre email"
+                        value={text}
+                        onChangeText={onChangeText}
+                    />
                 </View>
                 <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
                 >
-                    <View
-                        style={styles.subContainerButtons}
-                    >
-                    </View>
                     <View
                         style={styles.subContainerButtons}
                         dataSet={{ media: ids.subContainerButtons }}

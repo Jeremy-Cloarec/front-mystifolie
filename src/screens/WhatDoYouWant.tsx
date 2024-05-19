@@ -34,11 +34,10 @@ const { ids, styles } = StyleSheet.create({
         },
     },
     containerMainContent: {
-        flexGrow: 0.8,
+        flexGrow: 1,
         justifyContent: 'center',
     },
     containerTwoButton: {
-        flex: 1,
         width: "100%",
         gap: 12,
     },

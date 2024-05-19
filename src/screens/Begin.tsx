@@ -35,7 +35,7 @@ const { ids, styles } = StyleSheet.create({
     },
     containerMainContent: {
         flexGrow: 1,
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
         width: "100%",
     },
     containerTwoButton: {
