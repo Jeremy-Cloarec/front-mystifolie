@@ -70,6 +70,7 @@ export default function WhatDoYouWant() {
                             navigation={() => navigation.navigate('Inscription')}
                             backC={mainStyle.bgViolet4}
                             color={mainStyle.colorDark}
+                            accessibilityLabel="S'inscrire"
                         />
                     </View>
                     <View
@@ -79,6 +80,7 @@ export default function WhatDoYouWant() {
                         <ButtonValidateNavigation
                             name="Se connecter"
                             navigation={() => navigation.navigate('Connection')}
+                            accessibilityLabel="Se connecter"
                         />
                     </View>
                 </View>

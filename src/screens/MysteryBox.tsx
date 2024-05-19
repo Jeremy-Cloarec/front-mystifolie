@@ -3,9 +3,6 @@ import { View } from 'react-native'
 import StyleSheet from 'react-native-media-query'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { mainStyle } from '../mainStyles'
-import { useNavigation, NavigationProp } from '@react-navigation/native'
-import { RootStackParamList } from '../types/navigation'
-import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation';
 import NavigationBack from '../components/NavigationBack';
 import Title from '../components/Title';
 
@@ -63,7 +60,6 @@ export default function MysteryBox() {
                         color={mainStyle.colorWhite}
                     />
                 </View>
-
             </View>
         </View>
     )

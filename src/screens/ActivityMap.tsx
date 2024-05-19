@@ -93,6 +93,7 @@ export default function ActivityFormuleScreen() {
                         <ButtonValidateNavigation
                             name="Valider"
                             navigation={() => navigation.navigate('Combien serez-vous ?')}
+                            accessibilityLabel="Valider le nombre de personne"
                         />
                     </View>
                 </View>

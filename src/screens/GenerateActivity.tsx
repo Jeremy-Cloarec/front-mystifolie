@@ -73,6 +73,7 @@ export default function GenerateActivity() {
                         <ButtonValidateNavigation
                             name="Accueil"
                             navigation={() => navigation.navigate('Home')}
+                            accessibilityLabel="Retour à l'accueil"
                         />
                     </View>
                 </View>

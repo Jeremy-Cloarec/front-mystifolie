@@ -19,7 +19,7 @@ const { ids, styles } = StyleSheet.create({
         alignItems: 'center',
         height: "100%",
         width: "100%",
-      
+
         '@media (min-width: 768px)': {
             maxWidth: 500,
             paddingHorizontal: 16,
@@ -31,7 +31,7 @@ const { ids, styles } = StyleSheet.create({
         opacity: 0.8
     },
 
-    textPressable: {    
+    textPressable: {
         fontSize: 16,
         textAlign: 'center',
         opacity: 0.8

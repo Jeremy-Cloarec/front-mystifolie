@@ -63,6 +63,7 @@ export default function Begin() {
                         navigation={() => navigation.navigate('Choisissez votre formule')}
                         backC={mainStyle.bgViolet4}
                         color={mainStyle.colorDark}
+                        accessibilityLabel="Commencer le parcours"
                     />
                 </View>
 

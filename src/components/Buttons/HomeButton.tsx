@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, Pressable } from 'react-native';
+import { StyleSheet, Text, Pressable, TextStyle } from 'react-native';
 import { mainStyle } from '../../mainStyles';
 
 
@@ -24,8 +24,8 @@ const styles = StyleSheet.create({
 
 type Props = {
     name: string;
-    backC?: any;
-    colo?: any;
+    backC?: TextStyle;
+    colo?: TextStyle;
     navigation: () => void;
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Pressable, StyleSheet } from 'react-native'
+import { Text, Pressable, StyleSheet, AccessibilityActionEvent, TextStyle, ColorValue, ColorSchemeName } from 'react-native'
 import { mainStyle } from '../../mainStyles'
 
 
@@ -20,9 +20,10 @@ const styles = StyleSheet.create({
 
 type Props = {
     name: string;
-    color?: any;
-    backC?: any;
+    color?: TextStyle;
+    backC?: TextStyle;
     navigation: () => void;
+    accessibilityLabel: string;
 }
 
 export default function ButtonValidateNavigation(props: Props) {
@@ -36,7 +37,10 @@ export default function ButtonValidateNavigation(props: Props) {
                     props.backC
                 ]
             }
-            onPress={navigation}>
+            onPress={navigation}
+            accessibilityLabel= {props.accessibilityLabel}        
+            accessibilityRole="button"
+        >
             <Text style={
                 [
                     mainStyle.colorWhite,

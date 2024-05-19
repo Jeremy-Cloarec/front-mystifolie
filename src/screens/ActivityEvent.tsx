@@ -93,6 +93,7 @@ export default function ActivityEvent() {
                         <ButtonValidateNavigation
                             name="Valider"
                             navigation={() => navigation.navigate('Choisissez votre type d\'activité')}
+                            accessibilityLabel="Valider si vous fêtez un événement"
                         />
                     </View>
                 </View>

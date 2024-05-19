@@ -91,6 +91,7 @@ export default function Payment() {
                         <ButtonValidateNavigation
                             name="Valider"
                             navigation={() => navigation.navigate('Votre activité')}
+                            accessibilityLabel="Valider le paiement"
                         />
                     </View>
                 </View>

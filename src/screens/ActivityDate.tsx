@@ -93,6 +93,7 @@ export default function ActivityFormuleScreen() {
                         <ButtonValidateNavigation
                             name="Valider"
                             navigation={() => navigation.navigate('Quel est votre fourchette de prix ?')}
+                            accessibilityLabel="Valider la date"
                         />
                     </View>
                 </View>

@@ -93,6 +93,7 @@ export default function ActivityFormuleScreen() {
                         <ButtonValidateNavigation
                             name="Valider"
                             navigation={() => navigation.navigate('Choisissez votre date')}
+                            accessibilityLabel="Valider le type d'activité"
                         />
                     </View>
                 </View>

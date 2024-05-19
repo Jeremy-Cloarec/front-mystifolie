@@ -8,6 +8,7 @@ import { RootStackParamList } from '../types/navigation'
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation';
 import NavigationBack from '../components/NavigationBack';
 import InputText from '../components/Input/InputText';
+import Title from '../components/Title';
 
 const { ids, styles } = StyleSheet.create({
     container: {
@@ -35,6 +36,7 @@ const { ids, styles } = StyleSheet.create({
     containerMainContent: {
         flex: 1,
         justifyContent: 'center',
+        alignItems: 'center',
         width: "100%",
     },
     containerTwoButton: {
@@ -42,14 +44,15 @@ const { ids, styles } = StyleSheet.create({
         gap: 12,
     },
     subContainerButtons: {
-        flexDirection: 'row',
+        gap: 24,
     },
 })
 
 export default function Connexion() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-    const [text, onChangeText] = React.useState('');
+    const [email, onChangeEmail] = React.useState('');
+    const [password, onChangePassword] = React.useState('');
 
     return (
         <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
@@ -58,12 +61,7 @@ export default function Connexion() {
                 <View
                     style={styles.containerMainContent}
                     dataSet={{ media: ids.containerMainContent }}>
-                    <InputText 
-                        label="Votre email"
-                        placeholder="Entrez votre email"
-                        value={text}
-                        onChangeText={onChangeText}
-                    />
+                    <Title content="Connexion" />
                 </View>
                 <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
                 >
@@ -71,9 +69,24 @@ export default function Connexion() {
                         style={styles.subContainerButtons}
                         dataSet={{ media: ids.subContainerButtons }}
                     >
+                        <InputText
+                            label="Votre email"
+                            placeholder="Entrez votre email"
+                            value={email}
+                            onChangeText={onChangeEmail}
+                            keyboardType="email-address"
+                        />
+                        <InputText
+                            label="Votre mot de passe"
+                            placeholder="Entrez votre mot de passe"
+                            value={password}
+                            onChangeText={onChangePassword}
+                            secureTextEntry={true}
+                        />
                         <ButtonValidateNavigation
                             name="Se connecter"
                             navigation={() => navigation.navigate('Commencer')}
+                            accessibilityLabel="Valider la connexion"
                         />
                     </View>
                 </View>

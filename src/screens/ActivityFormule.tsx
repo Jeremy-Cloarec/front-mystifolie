@@ -93,6 +93,7 @@ export default function ActivityFormule() {
                         <ButtonValidateNavigation
                             name="Valider"
                             navigation={() => navigation.navigate('Vous fêtez un événement ?')}
+                            accessibilityLabel="Valider la formule"
                         />
                     </View>
                 </View>
