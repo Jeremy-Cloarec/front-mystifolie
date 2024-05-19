@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Stepper from '../components/Stepper/Stepper';
-import { Text, View } from 'react-native';
+import { Text, View, Alert, SafeAreaView } from 'react-native';
 import StyleSheet from 'react-native-media-query';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { dataStepper } from '../components/Stepper/dataStepper';
@@ -8,8 +8,8 @@ import { mainStyle } from '../mainStyles';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { RootStackParamList } from '../types/navigation';
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation';
-import Title from '../components/Title';
 import SelectView from '../components/Input/SelectView';
+import { FlatList } from 'react-native';
 
 const steps = [
     { todo: false, doing: true, done: false },
@@ -51,6 +51,8 @@ const { ids, styles } = StyleSheet.create({
     containerMainContent: {
         flexGrow: 1,
         justifyContent: 'center',
+        gap: 12,
+        width: "100%",
     },
     containerTwoButton: {
         width: "100%",
@@ -58,13 +60,75 @@ const { ids, styles } = StyleSheet.create({
     },
     subContainerButtons: {
         flexDirection: 'row',
+    },
+    flatList: {
+        width: "100%"
+    },
+    error: {
+        marginBottom: 12
     }
 })
+
+type ItemData = {
+    id: string;
+    formule: string;
+    detail: string;
+};
+
+const formulesObject: ItemData[] = [
+    {
+        id: "1",
+        formule: 'Formule 1',
+        detail: "Petit-déjeuner, activité,  restaurant"
+    },
+    {
+        id: "2",
+        formule: 'Formule 2',
+        detail: "Déjeuner, activité"
+    },
+    {
+        id: "3",
+        formule: 'Formule 3',
+        detail: "Petit-déjeuner, activité"
+    },
+    {
+        id: "4",
+        formule: 'Formule 4',
+        detail: "Activité,  restaurant"
+    },
+];
+
+type ItemProps = {
+    item: ItemData;
+    onPress: () => void;
+};
 
 
 export default function ActivityFormule() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+    const [selectedId, setSelectedId] = useState<string | null>(null);
+    const [error, setError] = useState<string | null>(null);
+
+
+    const handlePress = (id: string) => {
+        setSelectedId(id);
+        setError(null);
+    };
+
+
+    const handleValidationPress = () => {
+        if (!selectedId) {
+            setError('Veuillez sélectionner une formule avant de continuer.');
+        } else {
+            const selectedFormule = formulesObject.find(item => item.id === selectedId);
+            if (selectedFormule) {
+                console.log(`Selected Formule: ${selectedFormule.formule}`);
+            }
+            navigation.navigate('Vous fêtez un événement ?');
+        }
+    };
 
     return (
         <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
@@ -75,24 +139,32 @@ export default function ActivityFormule() {
             />
 
             <View style={[styles.body, mainStyle.bgOrange5, styles.containerMain]} dataSet={{ media: ids.containerMain }}>
-                <View
-                    style={styles.containerMainContent}
-                    dataSet={{ media: ids.containerMainContent }}>
-                    <SelectView/>
-                </View>
+                <FlatList
+                    data={formulesObject}
+                    renderItem={({ item }) => (
+                        <SelectView
+                            formule={item.formule}
+                            detail={item.detail}
+                            borderColor={item.id === selectedId ? '#58347C' : '#CCC2D7'}
+                            handlePress={() => handlePress(item.id)}
+                        />
+                    )}
+                    keyExtractor={item => item.id}
+                    style={styles.flatList}
+                    contentContainerStyle={styles.containerMainContent}
+                />
+
+                {error && <Text style={styles.error}>{error}</Text>}
+
                 <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
                 >
-                    <View
-                        style={styles.subContainerButtons}
-                    >
-                    </View>
                     <View
                         style={styles.subContainerButtons}
                         dataSet={{ media: ids.subContainerButtons }}
                     >
                         <ButtonValidateNavigation
                             name="Valider"
-                            navigation={() => navigation.navigate('Vous fêtez un événement ?')}
+                            navigation={handleValidationPress}
                             accessibilityLabel="Valider la formule"
                         />
                     </View>

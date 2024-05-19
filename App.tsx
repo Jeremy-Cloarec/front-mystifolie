@@ -22,6 +22,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as SplashScreen from 'expo-splash-screen';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const Stack = createNativeStackNavigator();
 
@@ -42,96 +43,96 @@ export default function App() {
   }
 
   return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen
-            name="Home"
-            component={Home}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Que souhaitez-vous faire ?"
-            component={WhatDoYouWant}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Inscription"
-            component={Inscription}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Connection"
-            component={Connexion}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Choisissez votre formule"
-            component={ActivityFormule}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Commencer"
-            component={Begin}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Vous fêtez un événement ?"
-            component={ActivityEvent}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Choisissez votre type d'activité"
-            component={ActivityType}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Choisissez votre date"
-            component={ActivityDate}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Quel est votre fourchette de prix ?"
-            component={ActivityPrice}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Où voulez-vous allez ?"
-            component={ActivityMap}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Combien serez-vous ?"
-            component={ActivityNumberPeople}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Paiement"
-            component={Payment}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Votre activité"
-            component={GenerateActivity}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Vos activités"
-            component={YourActivities}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Boite mystère"
-            component={MysteryBox}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Partnairs"
-            component={Partnairs}
-            options={{ headerShown: false }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaProvider>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen
+              name="Home"
+              component={Home}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Que souhaitez-vous faire ?"
+              component={WhatDoYouWant}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Inscription"
+              component={Inscription}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Connection"
+              component={Connexion}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Choisissez votre formule"
+              component={ActivityFormule}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Commencer"
+              component={Begin}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Vous fêtez un événement ?"
+              component={ActivityEvent}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Choisissez votre type d'activité"
+              component={ActivityType}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Choisissez votre date"
+              component={ActivityDate}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Quel est votre fourchette de prix ?"
+              component={ActivityPrice}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Où voulez-vous allez ?"
+              component={ActivityMap}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Combien serez-vous ?"
+              component={ActivityNumberPeople}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Paiement"
+              component={Payment}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Votre activité"
+              component={GenerateActivity}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Vos activités"
+              component={YourActivities}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Boite mystère"
+              component={MysteryBox}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Partnairs"
+              component={Partnairs}
+              options={{ headerShown: false }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
   );
 }

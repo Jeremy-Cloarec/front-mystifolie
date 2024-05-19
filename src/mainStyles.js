@@ -19,11 +19,12 @@ export const mainStyle = StyleSheet.create({
     },
     h1: {
         fontSize: 32,
-        fontWeight: 'bold',
+    },
+    h2: {
+        fontSize: 25,
     },
     filterText: {
         fontSize: 16,
-        fontWeight: 'bold',
     },
     filterNextText: {
         fontSize: 14,

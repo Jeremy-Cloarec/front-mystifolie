@@ -43,6 +43,7 @@ const { ids, styles } = StyleSheet.create({
     containerNextFilter: {
         flex: 1,
         justifyContent: "center",
+        opacity: 0.6
     },
     containerImage: {
         justifyContent: "center",
@@ -103,7 +104,7 @@ export default function Stepper({ steps, stepsData, indexArray }: Props) {
                 </Pressable>
                 <View style={[styles.steps]}>
                     <View style={styles.containerFilter}>
-                        <Text style={[mainStyle.filterText, mainStyle.colorWhite, mainStyle.utendoRegular]}>{stepsData[indexArray].filtre}</Text>
+                        <Text style={[mainStyle.filterText, mainStyle.colorWhite, mainStyle.utendoMedium]}>{stepsData[indexArray].filtre}</Text>
                     </View>
                     <View style={styles.containerElement}>
                         {steps.map((step, index) => (
