@@ -47,7 +47,7 @@ export default function InputText(props: Props) {
                 {props.label}
             </Text>
             <TextInput
-                testID="password-input"
+                testID={props.testID}
                 accessibilityLabel="input"
                 accessibilityLabelledBy="inputLabel"
                 placeholder={props.placeholder}
@@ -74,6 +74,7 @@ export default function InputText(props: Props) {
                 <TouchableOpacity
                     style={styles.icon}
                     onPress={props.onToggleSecureTextEntry}
+                    testID="input-text-toggle-secure-text"
                 >
                     <MaterialCommunityIcons
                         name={props.secureTextEntry ? 'eye-off' : 'eye'}

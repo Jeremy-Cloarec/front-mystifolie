@@ -1,14 +1,15 @@
-import React from 'react'
-import Stepper from '../components/Stepper/Stepper'
-import { Text, View } from 'react-native'
-import StyleSheet from 'react-native-media-query'
+import React from 'react';
+import Stepper from '../components/Stepper/Stepper';
+import { Text, View } from 'react-native';
+import StyleSheet from 'react-native-media-query';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { dataStepper } from '../components/Stepper/dataStepper'
-import { mainStyle } from '../mainStyles'
-import { useNavigation, NavigationProp } from '@react-navigation/native'
-import { RootStackParamList } from '../types/navigation'
-import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation'
-import Title from '../components/Title'
+import { dataStepper } from '../components/Stepper/dataStepper';
+import { mainStyle } from '../mainStyles';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { RootStackParamList } from '../types/navigation';
+import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation';
+import Title from '../components/Title';
+import SelectView from '../components/Input/SelectView';
 
 const steps = [
     { todo: false, doing: true, done: false },
@@ -77,8 +78,7 @@ export default function ActivityFormule() {
                 <View
                     style={styles.containerMainContent}
                     dataSet={{ media: ids.containerMainContent }}>
-                    <Title content="Choisissez votre formule"
-                    />
+                    <SelectView/>
                 </View>
                 <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
                 >

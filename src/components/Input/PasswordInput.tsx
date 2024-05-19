@@ -5,11 +5,12 @@ import InputText from './InputText';
 const styles = StyleSheet.create({
     inputContainer: {
         width: "100%",
-        gap:8
+        gap: 8
     }
 });
 
 type PasswordInputProps = {
+    testID?: string;
     password: string;
     onChangePassword: (password: string) => void;
     showPassword: boolean;
@@ -17,12 +18,11 @@ type PasswordInputProps = {
     error?: string;
 };
 
-export default function PasswordInput ({ password, onChangePassword, showPassword, toggleShowPassword, error }: PasswordInputProps) {
+export default function PasswordInput({ password, onChangePassword, showPassword, toggleShowPassword, error, testID }: PasswordInputProps) {
     return (
         <View style={styles.inputContainer}>
             <InputText
-                testID="password-input"
-                password="testPassword"
+                testID= "password-input"
                 label="Votre mot de passe"
                 placeholder="Entrez votre mot de passe"
                 value={password}

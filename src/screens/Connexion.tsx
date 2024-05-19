@@ -34,8 +34,8 @@ type ErrorsData = {
 export default function Connexion() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-    const [email, onChangeEmail] = React.useState('');
-    const [password, onChangePassword] = React.useState('');
+    const [email, onChangeEmail] = React.useState('johndoe@gmail.com');
+    const [password, onChangePassword] = React.useState('1234');
     const [showPassword, setShowPassword] = useState(false);
     const [errors, setErrors] = useState<ErrorsData>({});
 
@@ -88,6 +88,7 @@ export default function Connexion() {
                 <View style={styles.containerForm}>
                     <EmailInput email={email} onChangeEmail={onChangeEmail} error={errors.email} />
                     <PasswordInput
+                        testID='password-input'
                         password={password}
                         onChangePassword={onChangePassword}
                         showPassword={showPassword}
