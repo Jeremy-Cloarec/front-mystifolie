@@ -9,6 +9,8 @@ import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNaviga
 import NavigationBack from '../components/NavigationBack';
 import InputText from '../components/Input/InputText';
 import Title from '../components/Title';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 
 const { ids, styles } = StyleSheet.create({
     container: {
@@ -52,7 +54,11 @@ export default function Connexion() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
     const [email, onChangeEmail] = React.useState('');
-    const [password, onChangePassword] = React.useState('');
+    const [password, onChangePassword] = React.useState('')
+    const [showPassword, setShowPassword] = useState(false)
+    const toggleShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
 
     return (
         <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
@@ -81,7 +87,8 @@ export default function Connexion() {
                             placeholder="Entrez votre mot de passe"
                             value={password}
                             onChangeText={onChangePassword}
-                            secureTextEntry={true}
+                            secureTextEntry={!showPassword} 
+                            onToggleSecureTextEntry={toggleShowPassword}
                         />
                         <ButtonValidateNavigation
                             name="Se connecter"

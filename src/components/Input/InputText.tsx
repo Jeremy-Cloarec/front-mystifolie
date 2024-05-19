@@ -1,8 +1,12 @@
 import * as React from "react";
-import { TextInput, Text, View, StyleSheet, Platform, TextStyle } from "react-native";
+import { TextInput, Text, View, StyleSheet, Platform, TextStyle, TouchableOpacity } from "react-native";
 import { mainStyle } from "../../mainStyles";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const styles = StyleSheet.create({
+    inputContainer: {
+        position: "relative",
+    },
     input: {
         borderWidth: 1,
         paddingHorizontal: 12,
@@ -13,22 +17,29 @@ const styles = StyleSheet.create({
     },
     label: {
         marginBottom: 8
-    }
+    },
+    icon: {
+        position: "absolute",
+        right: 4,
+        top: 45,
+        padding:6
+    },
 })
 
 export type Props = {
     label: string,
     placeholder: string,
     value: string,
+    onChangeText: (text: string) => void,
     keyboardType?: any
-    secureTextEntry?: boolean
-    onChangeText: (text: string) => void
+    secureTextEntry?: boolean,
+    onToggleSecureTextEntry?: () => void
 
 }
 
 export default function InputText(props: Props) {
     return (
-        <View>
+        <View style={styles.inputContainer}>
             <Text
                 nativeID="inputLabel"
                 style={[styles.label, mainStyle.utendoRegular, mainStyle.text]}>
@@ -48,8 +59,8 @@ export default function InputText(props: Props) {
                         mainStyle.utendoRegular,
                         mainStyle.colorDark,
                         mainStyle.text,
-                        Platform.select ({
-                            web:{
+                        Platform.select({
+                            web: {
                                 outlineColor: "#58347C",
                             }
                         }) as TextStyle
@@ -57,6 +68,18 @@ export default function InputText(props: Props) {
                 }
                 placeholderTextColor="#CCC2D7"
             />
+            {props.secureTextEntry !== undefined && (
+                <TouchableOpacity
+                    style={styles.icon}
+                    onPress={props.onToggleSecureTextEntry}
+                >
+                    <MaterialCommunityIcons
+                        name={props.secureTextEntry ? 'eye-off' : 'eye'}
+                        size={24}
+                        color="#aaa"
+                    />
+                </TouchableOpacity>
+            )}
         </View>
     )
 }
