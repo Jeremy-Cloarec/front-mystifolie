@@ -1,18 +1,19 @@
-import React from 'react'
-import Stepper from '../components/Stepper/Stepper'
-import { Text, View } from 'react-native'
-import StyleSheet from 'react-native-media-query'
+import React, { useState } from 'react';
+import Stepper from '../components/Stepper/Stepper';
+import { Text, View, Alert, SafeAreaView } from 'react-native';
+import StyleSheet from 'react-native-media-query';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { dataStepper } from '../components/Stepper/dataStepper'
-import { mainStyle } from '../mainStyles'
-import { useNavigation, NavigationProp } from '@react-navigation/native'
-import { RootStackParamList } from '../types/navigation'
-import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation'
-import Title from '../components/Title'
+import { dataStepper } from '../components/Stepper/dataStepper';
+import { mainStyle } from '../mainStyles';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { RootStackParamList } from '../types/navigation';
+import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation';
+import SelectView from '../components/Input/SelectView';
+import { FlatList } from 'react-native';
 
 const steps = [
-    { todo: false, doing: false, done: true },
-    { todo: true, doing: true, done: false },
+    { todo: false, doing: true, done: false },
+    { todo: true, doing: false, done: false },
     { todo: true, doing: false, done: false },
     { todo: true, doing: false, done: false },
     { todo: true, doing: false, done: false },
@@ -50,6 +51,8 @@ const { ids, styles } = StyleSheet.create({
     containerMainContent: {
         flexGrow: 1,
         justifyContent: 'center',
+        gap: 12,
+        width: "100%",
     },
     containerTwoButton: {
         width: "100%",
@@ -57,13 +60,55 @@ const { ids, styles } = StyleSheet.create({
     },
     subContainerButtons: {
         flexDirection: 'row',
+    },
+    flatList: {
+        width: "100%"
+    },
+    error: {
+        marginBottom: 12
     }
 })
 
+type ItemData = {
+    id: string;
+    title: string;
+    subtitle?: string;
+};
 
-export default function ActivityEvent() {
+const formulesObject: ItemData[] = [
+    {
+        id: "1",
+        title: 'Oui',
+    },
+    {
+        id: "2",
+        title: 'Non',
+    },
+];
+
+export default function ActivityFormule() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+    const [selectedId, setSelectedId] = useState<string | null>(null);
+    const [error, setError] = useState<string | null>(null);
+
+    const handlePress = (id: string) => {
+        setSelectedId(id);
+        setError(null);
+    };
+
+    const handleValidationPress = () => {
+        if (!selectedId) {
+            setError('Veuillez sélectionner une formule avant de continuer.');
+        } else {
+            const selectedFormule = formulesObject.find(item => item.id === selectedId);
+            if (selectedFormule) {
+                console.log(`Selected Formule: ${selectedFormule.title}`);
+            }
+            navigation.navigate('Choisissez votre type d\'activité');
+        }
+    };
 
     return (
         <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
@@ -74,26 +119,32 @@ export default function ActivityEvent() {
             />
 
             <View style={[styles.body, mainStyle.bgOrange5, styles.containerMain]} dataSet={{ media: ids.containerMain }}>
-                <View
-                    style={styles.containerMainContent}
-                    dataSet={{ media: ids.containerMainContent }}>
-                    <Title content="Evénement"
-                    />
-                </View>
+                <FlatList
+                    data={formulesObject}
+                    renderItem={({ item }) => (
+                        <SelectView
+                            title={item.title}              
+                            borderColor={item.id === selectedId ? '#58347C' : '#CCC2D7'}
+                            handlePress={() => handlePress(item.id)}
+                        />
+                    )}
+                    keyExtractor={item => item.id}
+                    style={styles.flatList}
+                    contentContainerStyle={styles.containerMainContent}
+                />
+
+                {error && <Text style={styles.error}>{error}</Text>}
+
                 <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
                 >
-                    <View
-                        style={styles.subContainerButtons}
-                    >
-                    </View>
                     <View
                         style={styles.subContainerButtons}
                         dataSet={{ media: ids.subContainerButtons }}
                     >
                         <ButtonValidateNavigation
                             name="Valider"
-                            navigation={() => navigation.navigate('Choisissez votre type d\'activité')}
-                            accessibilityLabel="Valider si vous fêtez un événement"
+                            navigation={handleValidationPress}
+                            accessibilityLabel="Valider si vous fêtez un evenement ?"
                         />
                     </View>
                 </View>

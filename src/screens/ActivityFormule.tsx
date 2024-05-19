@@ -98,12 +98,6 @@ const formulesObject: ItemData[] = [
     },
 ];
 
-type ItemProps = {
-    item: ItemData;
-    onPress: () => void;
-};
-
-
 export default function ActivityFormule() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
@@ -143,8 +137,8 @@ export default function ActivityFormule() {
                     data={formulesObject}
                     renderItem={({ item }) => (
                         <SelectView
-                            formule={item.formule}
-                            detail={item.detail}
+                            title={item.formule}
+                            subTitle={item.detail}
                             borderColor={item.id === selectedId ? '#58347C' : '#CCC2D7'}
                             handlePress={() => handlePress(item.id)}
                         />
