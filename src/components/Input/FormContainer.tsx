@@ -29,7 +29,7 @@ const { ids, styles } = StyleSheet.create({
     },
 });
 
-const FormContainer = ({ children }: { children: React.ReactNode }) => {
+export default function FormContainer ({ children }: { children: React.ReactNode }){
     return (
         <View
             style={[
@@ -46,4 +46,3 @@ const FormContainer = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
-export default FormContainer;

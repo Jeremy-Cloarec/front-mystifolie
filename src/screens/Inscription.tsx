@@ -1,102 +1,106 @@
 import React, { useState } from 'react'
-import { View } from 'react-native'
-import StyleSheet from 'react-native-media-query'
+import { View, Text } from 'react-native'
+import StyleSheet from 'react-native-media-query';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
-import { RootStackParamList } from '../types/navigation'
+import { RootStackParamList } from '../types/navigation';
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation';
 import NavigationBack from '../components/NavigationBack';
 import Title from '../components/Title';
-import InputText from '../components/Input/InputText';
+import EmailInput from '../components/Input/EmailInput';
+import PasswordInput from '../components/Input/PasswordInput';
+import FormContainer from '../components/Input/FormContainer';
 
 const { ids, styles } = StyleSheet.create({
-    container: {
+    containerTitle: {
         flex: 1,
-    },
-    body: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 25,
-    },
-    containerMain: {
-        paddingHorizontal: 16,
-        paddingVertical: 16,
-        width: "100%",
-        margin: "auto",
-        '@media (min-width: 768px)': {
-            marginTop: 32,
-            marginBottom: 32,
-            borderRadius: 12,
-            maxWidth: 500,
-            boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
-        },
-    },
-    containerMainContent: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center",
         width: "100%",
     },
-    containerTwoButton: {
+    containerForm: {
+        justifyContent: "center",
+        alignItems: "center",
         width: "100%",
-        gap: 12,
-    },
-    subContainerButtons: {
         gap: 24,
     },
 })
 
-export default function Inscription() {
+type ErrorsData = {
+    email?: string;
+    password?: string;
+};
+
+export default function Connexion() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
     const [email, onChangeEmail] = React.useState('');
-    const [password, onChangePassword] = React.useState('')
-    const [showPassword, setShowPassword] = useState(false)
+    const [password, onChangePassword] = React.useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [errors, setErrors] = useState<ErrorsData>({});
+
+    const validateEmail = (email: string) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const validatePassword = (password: string) => {
+        return password.length >= 4;
+    };
+
+    const validateForm = () => {
+        let errors: ErrorsData = {};
+
+        if (!email) {
+            errors.email = "Veuillez renseigner votre email";
+        } else if (!validateEmail(email)) {
+            errors.email = "L'email n'est pas valide";
+        }
+
+        if (!password) {
+            errors.password = "Veuillez renseigner votre mot de passe";
+        } else if (!validatePassword(password)) {
+            errors.password = "Le mot de passe doit contenir au moins 4 caractères";
+        }
+
+        setErrors(errors);
+
+        return Object.keys(errors).length === 0;
+    }
+
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
     };
 
+    const handleNavigation = () => {
+        if (validateForm()) {
+            navigation.navigate('Connection');
+        }
+    };
+
     return (
-        <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
+        <View style={{ flex: 1, paddingTop: insets.top, paddingBottom: insets.bottom }}>
             <NavigationBack />
-            <View style={[styles.body, mainStyle.bgOrange5, styles.containerMain]} dataSet={{ media: ids.containerMain }}>
-                <View
-                    style={styles.containerMainContent}
-                    dataSet={{ media: ids.containerMainContent }}>
-                    <Title content="Inscription"
+            <FormContainer>
+                <View style={styles.containerTitle}>
+                    <Title content="S'inscrire" />
+                </View>
+                <View style={styles.containerForm}>
+                    <EmailInput email={email} onChangeEmail={onChangeEmail} error={errors.email} />
+                    <PasswordInput
+                        password={password}
+                        onChangePassword={onChangePassword}
+                        showPassword={showPassword}
+                        toggleShowPassword={toggleShowPassword}
+                        error={errors.password}
+                    />
+                    <ButtonValidateNavigation
+                        name="Se connecter"
+                        navigation={handleNavigation}
+                        accessibilityLabel="Valider l'inscription'"
                     />
                 </View>
-                <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
-                >
-                    <View
-                        style={styles.subContainerButtons}
-                        dataSet={{ media: ids.subContainerButtons }}
-                    >
-                        <InputText
-                            label="Votre email"
-                            placeholder="Entrez votre email"
-                            value={email}
-                            onChangeText={onChangeEmail}
-                            keyboardType="email-address"
-                        />
-                        <InputText
-                            label="Votre mot de passe"
-                            placeholder="Entrez votre mot de passe"
-                            value={password}
-                            onChangeText={onChangePassword}
-                            secureTextEntry={!showPassword}
-                            onToggleSecureTextEntry={toggleShowPassword}
-                        />
-                        <ButtonValidateNavigation
-                            name="S'inscrire"
-                            navigation={() => navigation.navigate('Connection')}
-                            accessibilityLabel="Valider l'inscription'n"
-                        />
-                    </View>
-                </View>
-            </View>
+            </FormContainer>
         </View>
     )
 }

@@ -102,7 +102,6 @@ export default function Connexion() {
                 </View>
             </FormContainer>
         </View>
-
     )
 }
 

@@ -15,7 +15,7 @@ type EmailInputProps = {
     error?: string;
 };
 
-const EmailInput = ({ email, onChangeEmail, error }: EmailInputProps) => {
+export default function EmailInput ({ email, onChangeEmail, error }: EmailInputProps){
     return (
         <View style={styles.inputContainer}>
             <InputText
@@ -29,5 +29,3 @@ const EmailInput = ({ email, onChangeEmail, error }: EmailInputProps) => {
         </View>
     );
 };
-
-export default EmailInput;

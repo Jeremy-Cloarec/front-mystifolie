@@ -17,7 +17,7 @@ type PasswordInputProps = {
     error?: string;
 };
 
-const PasswordInput = ({ password, onChangePassword, showPassword, toggleShowPassword, error }: PasswordInputProps) => {
+export default function PasswordInput ({ password, onChangePassword, showPassword, toggleShowPassword, error }: PasswordInputProps) {
     return (
         <View style={styles.inputContainer}>
             <InputText
@@ -33,4 +33,3 @@ const PasswordInput = ({ password, onChangePassword, showPassword, toggleShowPas
     );
 };
 
-export default PasswordInput;
