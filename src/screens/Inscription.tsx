@@ -8,6 +8,7 @@ import { RootStackParamList } from '../types/navigation'
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation';
 import NavigationBack from '../components/NavigationBack';
 import Title from '../components/Title';
+import InputText from '../components/Input/InputText';
 
 const { ids, styles } = StyleSheet.create({
     container: {
@@ -17,7 +18,6 @@ const { ids, styles } = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "red",
         padding: 25,
     },
     containerMain: {
@@ -34,21 +34,29 @@ const { ids, styles } = StyleSheet.create({
         },
     },
     containerMainContent: {
-        flexGrow: 1,
+        flex: 1,
         justifyContent: 'center',
+        alignItems: 'center',
+        width: "100%",
     },
     containerTwoButton: {
         width: "100%",
         gap: 12,
     },
     subContainerButtons: {
-        flexDirection: 'row',
-    }
+        gap: 24,
+    },
 })
 
 export default function Inscription() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+    const [email, onChangeEmail] = React.useState('');
+    const [password, onChangePassword] = React.useState('')
+    const [showPassword, setShowPassword] = useState(false)
+    const toggleShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
 
     return (
         <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
@@ -64,15 +72,27 @@ export default function Inscription() {
                 >
                     <View
                         style={styles.subContainerButtons}
-                    >
-                    </View>
-                    <View
-                        style={styles.subContainerButtons}
                         dataSet={{ media: ids.subContainerButtons }}
                     >
+                        <InputText
+                            label="Votre email"
+                            placeholder="Entrez votre email"
+                            value={email}
+                            onChangeText={onChangeEmail}
+                            keyboardType="email-address"
+                        />
+                        <InputText
+                            label="Votre mot de passe"
+                            placeholder="Entrez votre mot de passe"
+                            value={password}
+                            onChangeText={onChangePassword}
+                            secureTextEntry={!showPassword}
+                            onToggleSecureTextEntry={toggleShowPassword}
+                        />
                         <ButtonValidateNavigation
                             name="S'inscrire"
                             navigation={() => navigation.navigate('Connection')}
+                            accessibilityLabel="Valider l'inscription'n"
                         />
                     </View>
                 </View>

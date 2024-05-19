@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     },
 })
 
-export type Props = {
+type Props = {
     label: string,
     placeholder: string,
     value: string,

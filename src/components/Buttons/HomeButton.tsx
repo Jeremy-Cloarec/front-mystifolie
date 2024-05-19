@@ -21,11 +21,10 @@ const styles = StyleSheet.create({
         textAlign: "center",
     }
 });
-
 type Props = {
     name: string;
-    backC?: TextStyle;
-    colo?: TextStyle;
+    backC?: TextStyle | null;
+    colo?: TextStyle | null ;
     navigation: () => void;
 }
 

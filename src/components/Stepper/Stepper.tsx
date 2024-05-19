@@ -77,7 +77,7 @@ const { ids, styles } = StyleSheet.create({
     },
 })
 
-export type Props = {
+type Props = {
     steps: { done: boolean, todo: boolean, doing: boolean }[]
     indexArray: number,
     stepsData: { filtre: string, nextFiltre: string }[]
