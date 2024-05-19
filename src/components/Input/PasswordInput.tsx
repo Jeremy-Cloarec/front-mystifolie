@@ -21,6 +21,8 @@ export default function PasswordInput ({ password, onChangePassword, showPasswor
     return (
         <View style={styles.inputContainer}>
             <InputText
+                testID="password-input"
+                password="testPassword"
                 label="Votre mot de passe"
                 placeholder="Entrez votre mot de passe"
                 value={password}
@@ -32,4 +34,3 @@ export default function PasswordInput ({ password, onChangePassword, showPasswor
         </View>
     );
 };
-

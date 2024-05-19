@@ -27,6 +27,8 @@ const styles = StyleSheet.create({
 })
 
 type Props = {
+    testID?: string,
+    password?: string,
     label: string,
     placeholder: string,
     value: string,
@@ -34,7 +36,6 @@ type Props = {
     keyboardType?: any
     secureTextEntry?: boolean,
     onToggleSecureTextEntry?: () => void
-
 }
 
 export default function InputText(props: Props) {
@@ -46,6 +47,7 @@ export default function InputText(props: Props) {
                 {props.label}
             </Text>
             <TextInput
+                testID="password-input"
                 accessibilityLabel="input"
                 accessibilityLabelledBy="inputLabel"
                 placeholder={props.placeholder}
