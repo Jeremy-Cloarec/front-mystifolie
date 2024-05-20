@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image, View, Pressable } from 'react-native';
 import StyleSheet from 'react-native-media-query'
-import { mainStyle } from 'src/mainStyles';
+import { mainStyle } from '../mainStyles';
 
 const { ids, styles } = StyleSheet.create({
     containerNav: {

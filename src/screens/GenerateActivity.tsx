@@ -7,7 +7,7 @@ import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation'
 import Title from '../components/Title'
-import UserNav from 'src/components/UserNav';
+import UserNav from '../components/UserNav';
 
 const { ids, styles } = StyleSheet.create({
     container: {

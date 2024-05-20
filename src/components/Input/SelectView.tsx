@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
-import { mainStyle } from "src/mainStyles";
+import { mainStyle } from "../../mainStyles";
 type Props = {
     handlePress: () => void;
     title: string;
