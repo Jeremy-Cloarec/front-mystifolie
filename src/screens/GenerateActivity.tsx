@@ -8,6 +8,7 @@ import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation'
 import Title from '../components/Title'
+import UserNav from 'src/components/UserNav';
 
 const { ids, styles } = StyleSheet.create({
     container: {
@@ -52,6 +53,7 @@ export default function GenerateActivity() {
 
     return (
         <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
+            <UserNav navigation={() => navigation.navigate('Compte')} />
 
             <View style={[styles.body, mainStyle.bgOrange5, styles.containerMain]} dataSet={{ media: ids.containerMain }}>
                 <View

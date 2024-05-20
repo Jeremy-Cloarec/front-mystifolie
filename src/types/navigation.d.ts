@@ -15,7 +15,7 @@ export type RootStackParamList = {
     "Combien serez-vous ?": undefined;
     "Paiement": undefined;
     "Votre activité": undefined;
-    "Vos activités": undefined;
+    "Compte": undefined;
     "Boite mystère": undefined;
     "Partnairs": undefined;
 };

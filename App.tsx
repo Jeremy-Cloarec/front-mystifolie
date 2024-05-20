@@ -15,7 +15,7 @@ import Begin from './src/screens/Begin';
 import Payment from './src/screens/Payment';
 import GenerateActivity from './src/screens/GenerateActivity';
 import Partnairs from './src/screens/Partnairs';
-import YourActivities from './src/screens/YourActivities';
+import Account from './src/screens/Account';
 import MysteryBox from './src/screens/MysteryBox';
 
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -117,8 +117,8 @@ export default function App() {
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="Vos activités"
-              component={YourActivities}
+              name="Compte"
+              component={Account}
               options={{ headerShown: false }}
             />
             <Stack.Screen

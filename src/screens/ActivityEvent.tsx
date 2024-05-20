@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Stepper from '../components/Stepper/Stepper';
-import { Text, View, Alert, SafeAreaView } from 'react-native';
+import { Text, View } from 'react-native';
 import StyleSheet from 'react-native-media-query';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { dataStepper } from '../components/Stepper/dataStepper';
@@ -123,7 +123,7 @@ export default function ActivityFormule() {
                     data={formulesObject}
                     renderItem={({ item }) => (
                         <SelectView
-                            title={item.title}              
+                            title={item.title}
                             borderColor={item.id === selectedId ? '#58347C' : '#CCC2D7'}
                             handlePress={() => handlePress(item.id)}
                         />

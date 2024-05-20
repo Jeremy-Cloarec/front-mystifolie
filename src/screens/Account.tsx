@@ -47,7 +47,7 @@ const { ids, styles } = StyleSheet.create({
     }
 })
 
-export default function YourActivities() {
+export default function Account() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
@@ -59,7 +59,7 @@ export default function YourActivities() {
                     style={styles.containerMainContent}
                     dataSet={{ media: ids.containerMainContent }}>
                     <Title
-                        content="Vos activités"
+                        content="Votre compte"
                         color={mainStyle.colorWhite}
                     />
                 </View>

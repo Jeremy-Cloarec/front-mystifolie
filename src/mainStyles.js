@@ -14,7 +14,7 @@ export const mainStyle = StyleSheet.create({
         alignItems: 'center',
         width: "100%",
         maxWidth: 1024,
-        padding: 25,
+        padding: 16,
         flex: 1,
     },
     h1: {
