@@ -2,7 +2,6 @@ import React from 'react'
 import { View } from 'react-native'
 import StyleSheet from 'react-native-media-query'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { dataStepper } from '../components/Stepper/dataStepper'
 import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'

@@ -5,6 +5,7 @@ type Props = {
     title: string;
     subTitle?: string;
     borderColor: any;
+    fontSize?: number;
 }
 
 const styles = StyleSheet.create({
@@ -40,8 +41,9 @@ export default function SelectView(prop: Props) {
                     style={[
                         styles.title,
                         mainStyle.colorViolet1,
-                        mainStyle.h2,
-                        mainStyle.utendoMedium]}>
+                        mainStyle.utendoMedium,
+                        !prop.fontSize ? mainStyle.h2 : {fontSize: 20}
+                    ]}>
                     {prop.title}
                 </Text>
                 {prop.subTitle ? <Text style={[styles.subTitle, mainStyle.colorViolet1, mainStyle.text, mainStyle.utendoRegular]}> {prop.subTitle}</Text> : null}

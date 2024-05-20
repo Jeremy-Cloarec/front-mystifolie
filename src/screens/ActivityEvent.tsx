@@ -12,8 +12,8 @@ import SelectView from '../components/Input/SelectView';
 import { FlatList } from 'react-native';
 
 const steps = [
+    { todo: false, doing: false, done: true },
     { todo: false, doing: true, done: false },
-    { todo: true, doing: false, done: false },
     { todo: true, doing: false, done: false },
     { todo: true, doing: false, done: false },
     { todo: true, doing: false, done: false },
