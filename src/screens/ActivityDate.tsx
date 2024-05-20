@@ -9,6 +9,7 @@ import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation'
 import Title from '../components/Title'
+import DatePicker from 'src/components/DatePicker';
 
 const steps = [
     { todo: false, doing: false, done: true },
@@ -77,8 +78,7 @@ export default function ActivityFormuleScreen() {
                 <View
                     style={styles.containerMainContent}
                     dataSet={{ media: ids.containerMainContent }}>
-                    <Title content="Date"
-                    />
+                    <DatePicker />
                 </View>
                 <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
                 >

@@ -22,7 +22,9 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as SplashScreen from 'expo-splash-screen';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
+import { fr, registerTranslation } from 'react-native-paper-dates'
+registerTranslation('fr', fr)
 
 const Stack = createNativeStackNavigator();
 
