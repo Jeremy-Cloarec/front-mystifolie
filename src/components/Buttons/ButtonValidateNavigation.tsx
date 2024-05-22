@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Pressable, StyleSheet, AccessibilityActionEvent, TextStyle, ColorValue, ColorSchemeName } from 'react-native'
+import { Text, Pressable, StyleSheet, TextStyle} from 'react-native'
 import { mainStyle } from '../../mainStyles'
 
 

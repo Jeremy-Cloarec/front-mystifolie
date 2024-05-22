@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { DatePickerModal } from 'react-native-paper-dates';
 import ButtonValidateNavigation from "./Buttons/ButtonValidateNavigation";
-import { mainStyle } from "src/mainStyles";
+import { mainStyle } from "../mainStyles";
 
 type Props = {
     date : Date | undefined,

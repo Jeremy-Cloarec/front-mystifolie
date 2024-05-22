@@ -8,7 +8,7 @@ import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation'
-import DatePicker from 'src/components/DatePicker';
+import DatePicker from '../components/DatePicker';
 
 const steps = [
     { todo: false, doing: false, done: true },
