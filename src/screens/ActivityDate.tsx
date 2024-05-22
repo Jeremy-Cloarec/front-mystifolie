@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Stepper from '../components/Stepper/Stepper'
 import { Text, View } from 'react-native'
 import StyleSheet from 'react-native-media-query'
@@ -8,7 +8,6 @@ import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation'
-import Title from '../components/Title'
 import DatePicker from 'src/components/DatePicker';
 
 const steps = [
@@ -51,6 +50,7 @@ const { ids, styles } = StyleSheet.create({
     containerMainContent: {
         flexGrow: 1,
         justifyContent: 'center',
+        width: "100%",
     },
     containerTwoButton: {
         width: "100%",
@@ -58,13 +58,37 @@ const { ids, styles } = StyleSheet.create({
     },
     subContainerButtons: {
         flexDirection: 'row',
+    },
+    error: {
+        marginBottom: 12
     }
 })
 
 
 export default function ActivityFormuleScreen() {
+
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+    const [error, setError] = useState<string | null>(null);
+    const [date, setDate] = React.useState<any>(undefined);
+    const [open, setOpen] = React.useState(false);
+
+    useEffect(() => {
+        if (date !== undefined) {
+            setError('');
+        }
+    }, [date]);
+
+    const handleValidationPress = () => {
+        if (!date) {
+            setError('Veuillez sélectionner une date avant de continuer.');
+        } else {
+            if (date) {
+                console.log(`Selected Date: ${date}`);
+            }
+            navigation.navigate('Quel est votre fourchette de prix ?');
+        }
+    };
 
     return (
         <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
@@ -73,13 +97,20 @@ export default function ActivityFormuleScreen() {
                 stepsData={stepsData}
                 indexArray={3}
             />
-
             <View style={[styles.body, mainStyle.bgOrange5, styles.containerMain]} dataSet={{ media: ids.containerMain }}>
                 <View
                     style={styles.containerMainContent}
                     dataSet={{ media: ids.containerMainContent }}>
-                    <DatePicker />
+                    <DatePicker 
+                        date={date}
+                        setDate={setDate}
+                        open={open}
+                        setOpen={setOpen}
+                    />
                 </View>
+
+                {error && <Text style={styles.error}>{error}</Text>}
+
                 <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
                 >
                     <View
@@ -92,7 +123,7 @@ export default function ActivityFormuleScreen() {
                     >
                         <ButtonValidateNavigation
                             name="Valider"
-                            navigation={() => navigation.navigate('Quel est votre fourchette de prix ?')}
+                            navigation={handleValidationPress}
                             accessibilityLabel="Valider la date"
                         />
                     </View>
