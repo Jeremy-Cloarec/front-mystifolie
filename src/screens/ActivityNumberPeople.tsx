@@ -8,7 +8,7 @@ import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation'
-import Title from '../components/Title'
+import CountPeople from '../components/CountPeople';
 
 const steps = [
     { todo: false, doing: false, done: true },
@@ -73,12 +73,13 @@ export default function ActivityFormuleScreen() {
                 indexArray={6}
             />
             <View style={[styles.body, mainStyle.bgOrange5, styles.containerMain]} dataSet={{ media: ids.containerMain }}>
-                <View
-                    style={styles.containerMainContent}
-                    dataSet={{ media: ids.containerMainContent }}>
-                    <Title content="Combien"
-                    />
-                </View>
+                <CountPeople 
+                    handleIncrement={() => { }}
+                    handleDecrement={() => { }}
+                    value={0}
+                    minValue={-100}
+                    maxValue={100}
+                />
                 <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
                 >
                     <View
