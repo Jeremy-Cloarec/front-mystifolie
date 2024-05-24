@@ -1,6 +1,6 @@
 import React from 'react'
 import Stepper from '../components/Stepper/Stepper'
-import { Text, View } from 'react-native'
+import { Text, View, Platform } from 'react-native'
 import StyleSheet from 'react-native-media-query'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { dataStepper } from '../components/Stepper/dataStepper'
@@ -74,12 +74,22 @@ export default function ActivityFormuleScreen() {
             />
 
             <View style={[styles.body, mainStyle.bgOrange5, styles.containerMain]} dataSet={{ media: ids.containerMain }}>
-                <View
-                    style={styles.containerMainContent}
-                    dataSet={{ media: ids.containerMainContent }}>
-                    <Title content="Map"
-                    />
-                </View>
+                {Platform.OS !== 'web' ?
+                    (<View
+                        style={styles.containerMainContent}
+                        dataSet={{ media: ids.containerMainContent }}>
+                        <Title content="Map Android & IOS"/>
+                    </View>
+                    )
+                    :
+                    (<View
+                        style={styles.containerMainContent}
+                        dataSet={{ media: ids.containerMainContent }}>
+                        <Title content="Map OS"/>
+                    </View>)
+                }
+
+
                 <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
                 >
                     <View
