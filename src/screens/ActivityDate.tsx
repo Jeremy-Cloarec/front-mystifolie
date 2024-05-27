@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import Stepper from '../components/Stepper/Stepper'
 import { Text, View } from 'react-native'
 import StyleSheet from 'react-native-media-query'
@@ -64,7 +64,6 @@ const { ids, styles } = StyleSheet.create({
     }
 })
 
-
 export default function ActivityFormuleScreen() {
 
     const insets = useSafeAreaInsets();
@@ -101,16 +100,16 @@ export default function ActivityFormuleScreen() {
                 <View
                     style={styles.containerMainContent}
                     dataSet={{ media: ids.containerMainContent }}>
-                    <DatePicker 
+                    <DatePicker
                         date={date}
                         setDate={setDate}
                         open={open}
                         setOpen={setOpen}
                     />
                 </View>
-
-                {error && <Text style={styles.error}>{error}</Text>}
-
+                <View>
+                    {error && <Text style={styles.error}>{error}</Text>}
+                </View>
                 <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
                 >
                     <View

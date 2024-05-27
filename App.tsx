@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import './global.css';
 import Home from './src/screens/Home';
 import ActivityFormule from './src/screens/ActivityFormule';
 import ActivityType from './src/screens/ActivityType';

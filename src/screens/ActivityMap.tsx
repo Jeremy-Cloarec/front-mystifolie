@@ -89,7 +89,6 @@ export default function ActivityFormuleScreen() {
                     </View>)
                 }
 
-
                 <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
                 >
                     <View

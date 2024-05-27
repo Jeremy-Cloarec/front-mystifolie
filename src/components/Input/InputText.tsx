@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 type Props = {
     testID?: string,
     password?: string,
-    label: string,
+    label?: string,
     placeholder: string,
     value: string,
     onChangeText: (text: string) => void,

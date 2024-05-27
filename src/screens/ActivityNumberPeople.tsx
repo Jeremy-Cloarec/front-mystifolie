@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Stepper from '../components/Stepper/Stepper'
 import { Text, View } from 'react-native'
 import StyleSheet from 'react-native-media-query'
@@ -57,13 +57,34 @@ const { ids, styles } = StyleSheet.create({
     },
     subContainerButtons: {
         flexDirection: 'row',
+    },
+    error: {
+        marginBottom: 12
     }
 })
 
-
-export default function ActivityFormuleScreen() {
+export default function ActivityNumberPeople() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+    const [value, setValue] = useState(0);
+    const [error, setError] = useState<string | null>(null);
+
+    const handleValidationPress = () => {
+        if (value===0) {
+            setError('Veuillez entrer un nombre de personnes avant de continuer');
+        } else {
+            if (value) {
+                console.log(`Number of people: ${value}`);
+            }
+            navigation.navigate('Paiement');
+        }
+    };
+
+    useEffect(() => {
+        if (value > 0) {
+            setError('');
+        }
+    }, [value]);
 
     return (
         <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
@@ -73,13 +94,16 @@ export default function ActivityFormuleScreen() {
                 indexArray={6}
             />
             <View style={[styles.body, mainStyle.bgOrange5, styles.containerMain]} dataSet={{ media: ids.containerMain }}>
-                <CountPeople 
-                    handleIncrement={() => { }}
-                    handleDecrement={() => { }}
-                    value={0}
-                    minValue={-100}
-                    maxValue={100}
+                <CountPeople
+                    handleIncrement={() => setValue(value + 1)}
+                    handleDecrement={() => setValue(value - 1)}
+                    value={value}
+                    minValue={0}
+                    maxValue={20}
                 />
+                <View>
+                    {error && <Text style={styles.error}>{error}</Text>}
+                </View>
                 <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
                 >
                     <View
@@ -92,7 +116,7 @@ export default function ActivityFormuleScreen() {
                     >
                         <ButtonValidateNavigation
                             name="Valider"
-                            navigation={() => navigation.navigate('Paiement')}
+                            navigation={handleValidationPress}
                             accessibilityLabel="Valider le nombre de personne"
                         />
                     </View>
