@@ -24,8 +24,11 @@
       "./jest/setup.tsx"
     ],
     "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
-    ]
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg|rn-range-slider)"
+    ],
+    "moduleNameMapper": {
+      "rn-range-slider": "<rootDir>/__mocks__/rn-range-slider.js"
+    }
   },
   "dependencies": {
     "@expo/metro-runtime": "~3.2.1",
@@ -57,6 +60,7 @@
     "@types/jest": "^29.5.12",
     "@types/react": "~18.2.45",
     "@types/react-test-renderer": "^18.3.0",
+    "babel-jest": "^29.7.0",
     "jest": "^29.7.0",
     "jest-expo": "~51.0.2",
     "typescript": "~5.3.3"

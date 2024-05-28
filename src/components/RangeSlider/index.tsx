@@ -1,8 +1,6 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import RangeSliderRN from "rn-range-slider";
 import { View, Text } from "react-native";
-import { mainStyle } from "../../mainStyles";
-
 import Label from "./Label";
 import Notch from "./Notch";
 import Rail from "./Rail";
