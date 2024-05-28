@@ -147,7 +147,7 @@ export default function ActivityFormule() {
         // Check if no formule has been selected.
         if (selectedIds.length === 0) {
             // Set an error message.
-            setError('Veuillez sélectionner au moins une formule avant de continuer.');
+            setError('Veuillez sélectionner au moins un type d\'activité avant de continuer.');
         } 
         // If at least one formule is selected.
         else {
@@ -161,7 +161,7 @@ export default function ActivityFormule() {
             // The map function creates a new array with the results of calling a provided function on every element in the calling array.
             // In this case, the function is called on each formule in the selectedFormules array and returns the formule's title.
             // The resulting array is logged to the console.
-            console.log('Selected Formules:', selectedFormules.map(formule => formule.title));
+            console.log('Selected type(s):', selectedFormules.map(formule => formule.title));
             
             // Navigate to the "Choisissez votre type d'activité" screen.
             navigation.navigate('Choisissez votre date');

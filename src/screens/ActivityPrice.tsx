@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Stepper from '../components/Stepper/Stepper'
 import { Text, View } from 'react-native'
 import StyleSheet from 'react-native-media-query'
@@ -8,7 +8,7 @@ import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation'
-import Title from '../components/Title'
+import RangeSlider from '../components/RangeSlider';
 
 const steps = [
     { todo: false, doing: false, done: true },
@@ -50,6 +50,7 @@ const { ids, styles } = StyleSheet.create({
     containerMainContent: {
         flexGrow: 1,
         justifyContent: 'center',
+        width: "100%",
     },
     containerTwoButton: {
         width: "100%",
@@ -60,10 +61,20 @@ const { ids, styles } = StyleSheet.create({
     }
 })
 
-
 export default function ActivityFormuleScreen() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+    const [low, setLow] = useState(4);
+    const [high, setHigh] = useState(300);
+
+    const handleValidationPress = () => {
+        console.log(LogPrice(low, high));
+        navigation.navigate('Où voulez-vous allez ?');
+    };
+
+    function LogPrice(from: number, to: number) {
+        return (`Prix entre ${from}€ et ${to}€`);
+    }
 
     return (
         <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
@@ -74,11 +85,16 @@ export default function ActivityFormuleScreen() {
             />
 
             <View style={[styles.body, mainStyle.bgOrange5, styles.containerMain]} dataSet={{ media: ids.containerMain }}>
-                <View
-                    style={styles.containerMainContent}
-                    dataSet={{ media: ids.containerMainContent }}>
-                    <Title content="Prix"
-                    />
+                <View style={styles.containerMainContent} >
+                <RangeSlider 
+                    from={4} 
+                    to={300} 
+                    low={low}
+                    high={high}
+                    setLow={setLow}
+                    setHigh={setHigh}
+                />
+
                 </View>
                 <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
                 >
@@ -92,7 +108,7 @@ export default function ActivityFormuleScreen() {
                     >
                         <ButtonValidateNavigation
                             name="Valider"
-                            navigation={() => navigation.navigate('Où voulez-vous allez ?')}
+                            navigation={handleValidationPress}
                             accessibilityLabel="Valider le prix"
                         />
                     </View>
