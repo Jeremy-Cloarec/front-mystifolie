@@ -8,7 +8,8 @@ import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation'
-import Title from '../components/Title'
+import MapMobile from '../components/map/MapMobile';
+import MapWeb from '../components/map/MapWeb';
 
 const steps = [
     { todo: false, doing: false, done: true },
@@ -50,6 +51,9 @@ const { ids, styles } = StyleSheet.create({
     containerMainContent: {
         flexGrow: 1,
         justifyContent: 'center',
+        alignItems: 'center',
+        width: "100%",
+        backgroundColor: "green"
     },
     containerTwoButton: {
         width: "100%",
@@ -78,14 +82,14 @@ export default function ActivityFormuleScreen() {
                     (<View
                         style={styles.containerMainContent}
                         dataSet={{ media: ids.containerMainContent }}>
-                        <Title content="Map Android & IOS"/>
+                        <MapMobile />
                     </View>
                     )
                     :
                     (<View
                         style={styles.containerMainContent}
                         dataSet={{ media: ids.containerMainContent }}>
-                        <Title content="Map OS"/>
+                        <MapWeb />
                     </View>)
                 }
 
