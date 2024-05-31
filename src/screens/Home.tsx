@@ -63,7 +63,7 @@ export default function Home() {
 
     return (
         <View style={[mainStyle.container, mainStyle.bgOrange5, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
-            <UserNav navigation={() => navigation.navigate('Où voulez-vous allez ?')} />
+            <UserNav navigation={() => navigation.navigate('Compte')} />
             <View 
                 style={styles.containerMain}
                 dataSet={{ media: ids.containerMain }}

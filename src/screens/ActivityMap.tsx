@@ -53,7 +53,6 @@ const { ids, styles } = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         width: "100%",
-        backgroundColor: "green"
     },
     containerTwoButton: {
         width: "100%",

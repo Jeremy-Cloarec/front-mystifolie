@@ -74,6 +74,7 @@ export default function Connexion() {
 
     const handleNavigation = () => {
         if (validateForm()) {
+            console.log(email, password);
             navigation.navigate('Connection');
         }
     };
