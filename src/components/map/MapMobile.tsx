@@ -4,7 +4,6 @@ import MapView from 'react-native-maps';
 
 const styles = StyleSheet.create({
     containerMap: {
-        backgroundColor: 'red',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
