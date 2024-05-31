@@ -31,18 +31,23 @@ const styles = StyleSheet.create({
 export default function SelectView(prop: Props) {
     return (
         <View style={styles.containerPressable}>
-            <TouchableOpacity onPress={prop.handlePress} style={[
-                styles.pressable,
-                mainStyle.bgViolet5,
-                { borderColor: prop.borderColor },
-            ]}
+            <TouchableOpacity
+                accessibilityRole="button"
+                accessibilityLabel= { prop.title }
+                onPress={prop.handlePress}
+                
+                style={[
+                    styles.pressable,
+                    mainStyle.bgViolet5,
+                    { borderColor: prop.borderColor },
+                ]}
             >
                 <Text
                     style={[
                         styles.title,
                         mainStyle.colorViolet1,
                         mainStyle.utendoMedium,
-                        !prop.fontSize ? mainStyle.h2 : {fontSize: 20}
+                        !prop.fontSize ? mainStyle.h2 : { fontSize: 20 }
                     ]}>
                     {prop.title}
                 </Text>
