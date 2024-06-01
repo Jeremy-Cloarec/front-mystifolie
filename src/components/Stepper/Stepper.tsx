@@ -49,7 +49,7 @@ const { ids, styles } = StyleSheet.create({
         justifyContent: "center",
         alignItems: 'center',
         flex: 1,
-        maxWidth:50,
+        maxWidth: 50,
         '@media (min-width: 768px)': {
             alignItems: 'flex-start'
         },
@@ -85,12 +85,12 @@ type Props = {
 }
 export default function Stepper({ steps, stepsData, indexArray }: Props) {
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-    
+
     return (
         <View style={[styles.containerStepper, mainStyle.bgViolet1]}>
-            <View 
+            <View
                 style={styles.stepper}
-                dataSet={{ media: ids.stepper }}    
+                dataSet={{ media: ids.stepper }}
             >
                 <Pressable
                     style={styles.containerImage}
@@ -101,11 +101,17 @@ export default function Stepper({ steps, stepsData, indexArray }: Props) {
                     <Image
                         style={styles.image}
                         source={require('../../../assets/icons/back.png')}
+                        alt='back arow'
                     />
                 </Pressable>
                 <View style={[styles.steps]}>
                     <View style={styles.containerFilter}>
-                        <Text style={[mainStyle.filterText, mainStyle.colorWhite, mainStyle.utendoMedium]}>{stepsData[indexArray].filtre}</Text>
+                        <Text
+                            style={[mainStyle.filterText, mainStyle.colorWhite, mainStyle.utendoMedium]}
+                            accessibilityRole = "header"
+                        >
+                            {stepsData[indexArray].filtre}
+                        </Text>
                     </View>
                     <View style={styles.containerElement}>
                         {steps.map((step, index) => (
