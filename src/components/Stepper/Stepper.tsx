@@ -96,6 +96,7 @@ export default function Stepper({ steps, stepsData, indexArray }: Props) {
                     style={styles.containerImage}
                     dataSet={{ media: ids.containerImage }}
                     onPress={() => navigation.goBack()}
+                    accessibilityRole="button"
                 >
                     <Image
                         style={styles.image}
