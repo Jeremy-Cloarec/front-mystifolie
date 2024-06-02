@@ -126,7 +126,7 @@ export default function ActivityFormuleScreen() {
                     </View>)
                 }
 
-                {error && <Text style={styles.error}>{error}</Text>}
+                {error && <View><Text style={styles.error}>{error}</Text></View>}
 
                 <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
                 >
@@ -137,9 +137,13 @@ export default function ActivityFormuleScreen() {
                         <View style={styles.containerAdressText}>
                             <Text style={[mainStyle.text, mainStyle.utendoMedium]}>Adresse sélectionnée : </Text>
                             {address ? (
-                                <Text style={mainStyle.utendoRegular}>{address}</Text>
+                                <View>
+                                    <Text style={mainStyle.utendoRegular}>{address}</Text>
+                                </View>
                             ) : (
-                                <Text style={mainStyle.utendoRegular}>Selectionnez une adresse sur la carte</Text>
+                                <View>
+                                    <Text style={mainStyle.utendoRegular}>Selectionnez une adresse sur la carte</Text>
+                                </View>
                             )
                             }
                         </View>

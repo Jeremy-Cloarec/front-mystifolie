@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Stepper from '../components/Stepper/Stepper'
 import { Text, View } from 'react-native'
 import StyleSheet from 'react-native-media-query'
@@ -8,7 +8,8 @@ import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation'
-import Title from '../components/Title'
+import CardInput from '../components/Input/CardInput'
+import NameInput from '../components/Input/NameInput'
 
 const steps = [
     { todo: false, doing: false, done: true },
@@ -50,6 +51,8 @@ const { ids, styles } = StyleSheet.create({
     containerMainContent: {
         flexGrow: 1,
         justifyContent: 'center',
+        width: "100%",
+        gap: 12,
     },
     containerTwoButton: {
         width: "100%",
@@ -57,12 +60,20 @@ const { ids, styles } = StyleSheet.create({
     },
     subContainerButtons: {
         flexDirection: 'row',
+    },
+    containerInputPaiment: {
+        flexDirection: 'row',
+        gap: 12,
+        backgroundColor: "red",
     }
 })
 
 export default function Payment() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+    const [numberCard, onChangeNumberCard] = useState('');
+    const [name, onChangeName] = useState('');
 
     return (
         <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
@@ -75,15 +86,37 @@ export default function Payment() {
                 <View
                     style={styles.containerMainContent}
                     dataSet={{ media: ids.containerMainContent }}>
-                    <Title content="Paiement"
+                    <NameInput
+                        name={name}
+                        onChangeName={onChangeName}
                     />
+                    <CardInput
+                        numberCard={numberCard}
+                        onChangeNumberCard={onChangeNumberCard}
+                    />
+                    <View style={styles.containerInputPaiment}>
+                        <NameInput
+                            name={name}
+                            onChangeName={onChangeName}
+                        />
+                        <CardInput
+                            numberCard={numberCard}
+                            onChangeNumberCard={onChangeNumberCard}
+                        />
+                    </View>
+                    <View style={styles.containerInputPaiment}>
+                        <NameInput
+                            name={name}
+                            onChangeName={onChangeName}
+                        />
+                        <CardInput
+                            numberCard={numberCard}
+                            onChangeNumberCard={onChangeNumberCard}
+                        />
+                    </View>
                 </View>
                 <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
                 >
-                    <View
-                        style={styles.subContainerButtons}
-                    >
-                    </View>
                     <View
                         style={styles.subContainerButtons}
                         dataSet={{ media: ids.subContainerButtons }}

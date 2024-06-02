@@ -35,7 +35,7 @@ type Props = {
     onChangeText: (text: string) => void,
     keyboardType?: any
     secureTextEntry?: boolean,
-    onToggleSecureTextEntry?: () => void
+    onToggleSecureTextEntry?: () => void,
 }
 
 export default function InputText(props: Props) {
