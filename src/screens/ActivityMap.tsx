@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState, useEffect } from 'react';
 import Stepper from '../components/Stepper/Stepper'
 import { Text, View, Platform } from 'react-native'
 import StyleSheet from 'react-native-media-query'
@@ -32,14 +32,11 @@ const { ids, styles } = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "red",
-        padding: 25,
     },
     containerMain: {
-        paddingHorizontal: 16,
-        paddingVertical: 16,
         width: "100%",
         margin: "auto",
+        borderRadius: 12,
         '@media (min-width: 768px)': {
             marginTop: 32,
             marginBottom: 32,
@@ -59,14 +56,41 @@ const { ids, styles } = StyleSheet.create({
         gap: 12,
     },
     subContainerButtons: {
-        flexDirection: 'row',
+        padding: 16,
+        gap: 12,
+
+    },
+    containerAdressText: {
+        gap: 6,
+        paddingVertical: 6,
+    },
+    error: {
+        paddingTop: 12
     }
 })
-
 
 export default function ActivityFormuleScreen() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+    const [marker, setMarker] = useState(null);
+    const [address, setAddress] = useState('');
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (address !== undefined) {
+            setError('');
+        }
+    }, [address]);
+
+    const handleValidationPress = () => {
+        if (address === "") {
+            setError('Veuillez sélectionner un point sur la carte avant de continuer.');
+        } else {
+            console.log(`Selected Formule: ${address}`);
+            navigation.navigate('Combien serez-vous ?');
+        }
+    };
 
     return (
         <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
@@ -81,30 +105,47 @@ export default function ActivityFormuleScreen() {
                     (<View
                         style={styles.containerMainContent}
                         dataSet={{ media: ids.containerMainContent }}>
-                        <MapMobile />
+                        <MapMobile
+                            marker={marker}
+                            setMarker={setMarker}
+                            address={address}
+                            setAddress={setAddress}
+                        />
                     </View>
                     )
                     :
                     (<View
                         style={styles.containerMainContent}
                         dataSet={{ media: ids.containerMainContent }}>
-                        <MapWeb />
+                        <MapWeb
+                            marker={marker}
+                            setMarker={setMarker}
+                            address={address}
+                            setAddress={setAddress}
+                        />
                     </View>)
                 }
+
+                {error && <Text style={styles.error}>{error}</Text>}
 
                 <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
                 >
                     <View
                         style={styles.subContainerButtons}
-                    >
-                    </View>
-                    <View
-                        style={styles.subContainerButtons}
                         dataSet={{ media: ids.subContainerButtons }}
                     >
+                        <View style={styles.containerAdressText}>
+                            <Text style={[mainStyle.text, mainStyle.utendoMedium]}>Adresse sélectionnée : </Text>
+                            {address ? (
+                                <Text style={mainStyle.utendoRegular}>{address}</Text>
+                            ) : (
+                                <Text style={mainStyle.utendoRegular}>Selectionnez une adresse sur la carte</Text>
+                            )
+                            }
+                        </View>
                         <ButtonValidateNavigation
                             name="Valider"
-                            navigation={() => navigation.navigate('Combien serez-vous ?')}
+                            navigation={handleValidationPress}
                             accessibilityLabel="Valider le nombre de personne"
                         />
                     </View>

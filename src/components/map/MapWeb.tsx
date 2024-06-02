@@ -1,8 +1,15 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import loadGoogleMapsAPI from "./webMapComponent.js";
 
 let MapView = require("@preflower/react-native-web-maps").default;
+
+interface MapWebProps {
+    marker: { latitude: number; longitude: number } | null;
+    setMarker: any;
+    address: string;
+    setAddress: React.Dispatch<React.SetStateAction<string>>;
+}
 
 interface State {
     googleMapsLoaded: boolean;
@@ -16,43 +23,37 @@ interface State {
         latitude: number;
         longitude: number;
     } | null;
-    address: string; // Ajouter l'état pour l'adresse
+    address: string;
 }
 
-export default class MapWeb extends Component<{}, State> {
-    constructor(props: any) {
-        super(props);
-        this.state = {
-            googleMapsLoaded: false,
-            region: {
-                latitude: 45.764043, // Latitude de Lyon
-                longitude: 4.835659, // Longitude de Lyon
-                latitudeDelta: 0.05, // Ajuster cette valeur pour le niveau de zoom
-                longitudeDelta: 0.045, // Ajuster cette valeur pour le niveau de zoom
-            },
-            markerCoords: null, // Initialiser les coordonnées du marqueur à null
-            address: "", // Initialiser l'adresse à une chaîne vide
-        };
-    }
+const MapWeb: React.FC<MapWebProps> = ({ marker, setMarker, address, setAddress }) => {
+    const [googleMapsLoaded, setGoogleMapsLoaded] = useState<boolean>(false);
+    const [region, setRegion] = useState<State["region"]>({
+        latitude: 45.764043,
+        longitude: 4.835659,
+        latitudeDelta: 0.05,
+        longitudeDelta: 0.045,
+    });
+    const [markerCoords, setMarkerCoords] = useState<State["markerCoords"]>(null);
 
-    componentDidMount() {
+    useEffect(() => {
         loadGoogleMapsAPI(() => {
-            this.setState({ googleMapsLoaded: true });
+            setGoogleMapsLoaded(true);
         });
-    }
+    }, []);
 
-    handleMapPress = async (event: any) => {
+    const handleMapPress = async (event: any) => {
         const { coordinate } = event.nativeEvent;
-        this.setState({ markerCoords: coordinate });
-        console.log("Coordonnées du marqueur:", coordinate);
+        setMarkerCoords(coordinate);
+        setMarker(coordinate); // Mettre à jour le marker du parent
 
         // Obtenir l'adresse à partir des coordonnées
-        const address = await this.getAddressFromCoordinates(coordinate.latitude, coordinate.longitude);
-        this.setState({ address });
+        const address = await getAddressFromCoordinates(coordinate.latitude, coordinate.longitude);
+        setAddress(address); // Mettre à jour l'adresse du parent
         console.log("Adresse:", address);
     };
 
-    getAddressFromCoordinates = async (latitude: number, longitude: number) => {
+    const getAddressFromCoordinates = async (latitude: number, longitude: number) => {
         const apiKey = process.env.MAP_API;
         const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
         try {
@@ -69,64 +70,43 @@ export default class MapWeb extends Component<{}, State> {
         }
     };
 
-    render() {
-        const { googleMapsLoaded, region, markerCoords, address } = this.state;
-
-        return (
-            <View style={styles.container}>
-                {googleMapsLoaded ? (
-                    <>
-                        <MapView
-                            style={styles.map}
-                            initialRegion={region}
-                            zoomEnabled={true}
-                            zoomControlEnabled={true}
-                            mapType="terrain"
-                            showsPointsOfInterest={false}
-                            onPress={this.handleMapPress}
-                        >
-                            {markerCoords && (
-                                <MapView.Marker coordinate={markerCoords} />
-                            )}
-                        </MapView>
-                        {address && (
-                            <View style={styles.addressContainer}>
-                                <Text style={styles.addressText}>{address}</Text>
-                            </View>
+    return (
+        <View style={styles.container}>
+            {googleMapsLoaded ? (
+                <>
+                    <MapView
+                        style={styles.map}
+                        initialRegion={region}
+                        zoomEnabled={true}
+                        zoomControlEnabled={true}
+                        mapType="terrain"
+                        showsPointsOfInterest={false}
+                        onPress={handleMapPress}
+                    >
+                        {markerCoords && (
+                            <MapView.Marker coordinate={markerCoords} />
                         )}
-                    </>
-                ) : (
-                    <Text>Loading...</Text>
-                )}
-            </View>
-        );
-    }
+                    </MapView>
+                </>
+            ) : (
+                <Text>Loading...</Text>
+            )}
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
     container: {
         ...StyleSheet.absoluteFillObject,
+        borderRadius: 10,
     },
     map: {
         ...StyleSheet.absoluteFillObject,
-        borderColor: "white",
-        borderWidth: 8,
-        borderTopWidth: 4,
-        borderBottomWidth: 4,
     },
-    addressContainer: {
-        position: 'absolute',
-        bottom: 20,
-        backgroundColor: 'white',
-        padding: 10,
-        borderRadius: 10,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
-        elevation: 5,
-    },
+
     addressText: {
         fontSize: 16,
     },
 });
+
+export default MapWeb;

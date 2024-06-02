@@ -9,24 +9,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
     },
-    addressContainer: {
-        position: 'absolute',
-        bottom: 20,
-        backgroundColor: 'white',
-        padding: 10,
-        borderRadius: 10,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
-        elevation: 5,
-    },
-    addressText: {
-        fontSize: 16,
-    },
 });
 
-export default function MapMobile() {
+interface MapMobileProps {
+    marker: { latitude: number, longitude: number } | null;
+    setMarker:any;
+    address: string;
+    setAddress: (address: string) => void;
+}
+
+
+export default function MapMobile( { marker, setMarker, address, setAddress }: MapMobileProps ) {
     // Coordonnées initiales de Lyon
     const initialRegion = {
         latitude: 45.764043,
@@ -34,10 +27,6 @@ export default function MapMobile() {
         latitudeDelta: 0.05,
         longitudeDelta: 0.05,
     };
-
-    // État pour stocker les coordonnées du marqueur et l'adresse
-    const [marker, setMarker] = useState(null);
-    const [address, setAddress] = useState('');
 
     // Fonction pour obtenir l'adresse à partir des coordonnées
     const getAddressFromCoordinates = async (latitude: number, longitude: number) => {
@@ -80,11 +69,6 @@ export default function MapMobile() {
                     <Marker coordinate={marker} />
                 )}
             </MapView>
-            {address && (
-                <View style={styles.addressContainer}>
-                    <Text style={styles.addressText}>{address}</Text>
-                </View>
-            )}
         </View>
     );
 }
