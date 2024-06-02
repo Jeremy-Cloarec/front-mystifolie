@@ -5,6 +5,9 @@
     "baseUrl": "./",
     "strict": true,
   },
+  "include": [
+    "env.d.ts"
+  ],
   "exclude": [
     "node_modules",
     "__mocks__"
