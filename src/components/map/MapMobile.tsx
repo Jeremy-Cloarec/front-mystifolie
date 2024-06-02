@@ -9,6 +9,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
     },
+    addressContainer: {
+        position: 'absolute',
+        bottom: 20,
+        backgroundColor: 'white',
+        padding: 10,
+        borderRadius: 10,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+        elevation: 5,
+    },
+    addressText: {
+        fontSize: 16,
+    },
 });
 
 export default function MapMobile() {
@@ -57,13 +72,17 @@ export default function MapMobile() {
     return (
         <View style={styles.containerMap}>
             <MapView
-                initialRegion={initialRegion} onPress={handleMapPress}
-                style={{ width: '100%', height: '100%' }} >
-                {marker && <Marker coordinate={marker} />}
+                style={{ width: '100%', height: '100%' }}
+                initialRegion={initialRegion}
+                onPress={handleMapPress}
+            >
+                {marker && (
+                    <Marker coordinate={marker} />
+                )}
             </MapView>
             {address && (
-                <View>
-                    <Text>{address}</Text>
+                <View style={styles.addressContainer}>
+                    <Text style={styles.addressText}>{address}</Text>
                 </View>
             )}
         </View>
