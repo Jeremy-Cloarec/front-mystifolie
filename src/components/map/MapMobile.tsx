@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, Platform } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 
 const styles = StyleSheet.create({
@@ -40,8 +40,8 @@ export default function MapMobile() {
     const [address, setAddress] = useState('');
 
     // Fonction pour obtenir l'adresse à partir des coordonnées
-    const getAddressFromCoordinates = async (latitude : number, longitude: number) => {
-        const apiKey = 'AIzaSyC0lSvyZEKWb2Q1xaG8TRXFLI-ba4SzC6I';
+    const getAddressFromCoordinates = async (latitude: number, longitude: number) => {
+        const apiKey = process.env.MAP_API;
         const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
         try {
             const response = await fetch(url);

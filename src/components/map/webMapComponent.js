@@ -5,7 +5,7 @@ function loadGoogleMapsAPI(callback) {
         // Google Maps API is already loaded, call the callback function
         callback();
     } else {
-        const apiKey = "AIzaSyC0lSvyZEKWb2Q1xaG8TRXFLI-ba4SzC6I"
+        const apiKey = process.env.MAP_API;
         // Google Maps API is not loaded, dynamically load it
         const script = document.createElement('script');
         script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;

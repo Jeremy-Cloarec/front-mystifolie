@@ -53,7 +53,7 @@ export default class MapWeb extends Component<{}, State> {
     };
 
     getAddressFromCoordinates = async (latitude: number, longitude: number) => {
-        const apiKey = "AIzaSyC0lSvyZEKWb2Q1xaG8TRXFLI-ba4SzC6I"; // Remplacez par votre clé API Google Maps
+        const apiKey = process.env.MAP_API;
         const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
         try {
             const response = await fetch(url);
@@ -83,7 +83,7 @@ export default class MapWeb extends Component<{}, State> {
                             zoomControlEnabled={true}
                             mapType="terrain"
                             showsPointsOfInterest={false}
-                            onPress={this.handleMapPress} // Ajouter le gestionnaire d'événements onPress
+                            onPress={this.handleMapPress}
                         >
                             {markerCoords && (
                                 <MapView.Marker coordinate={markerCoords} />
