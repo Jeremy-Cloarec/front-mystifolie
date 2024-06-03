@@ -3,11 +3,11 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "baseUrl": "./",
-    "strict": true,
+    "strict": true
   },
   "include": [
-    "src/**/*",
-    "env.d.ts"
+    "**/*.ts",
+    "**/*.tsx"
   ],
   "exclude": [
     "node_modules",

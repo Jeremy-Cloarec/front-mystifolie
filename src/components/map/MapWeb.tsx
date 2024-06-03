@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import loadGoogleMapsAPI from "./webMapComponent.js";
+import loadGoogleMapsAPI from "./webMapComponent";
 
 let MapView = require("@preflower/react-native-web-maps").default;
 

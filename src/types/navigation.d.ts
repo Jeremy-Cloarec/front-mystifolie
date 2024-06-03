@@ -1,4 +1,4 @@
-import { StackNavigationProp } from '@react-navigation/stack';
+// import { StackNavigationProp } from '@react-navigation/stack';
 
 export type RootStackParamList = {
     "Home": undefined;
@@ -20,7 +20,7 @@ export type RootStackParamList = {
     "Partnairs": undefined;
 };
 
-export type NavigationProp = StackNavigationProp<RootStackParamList>;
+// export type NavigationProp = StackNavigationProp<RootStackParamList>;
 
 export interface NavigationProps {
     navigationNext?: () => void;

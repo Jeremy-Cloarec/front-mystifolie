@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 
@@ -17,7 +16,6 @@ interface MapMobileProps {
     address: string;
     setAddress: (address: string) => void;
 }
-
 
 export default function MapMobile( { marker, setMarker, address, setAddress }: MapMobileProps ) {
     // Coordonnées initiales de Lyon

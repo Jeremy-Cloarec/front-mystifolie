@@ -1,6 +1,6 @@
 
 // Function to load Google Maps API
-function loadGoogleMapsAPI(callback) {
+function loadGoogleMapsAPI(callback:any) {
     if (window.google && window.google.maps) {
         // Google Maps API is already loaded, call the callback function
         callback();
