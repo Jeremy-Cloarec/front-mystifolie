@@ -29,13 +29,14 @@ const styles = StyleSheet.create({
 type Props = {
     testID?: string,
     password?: string,
-    label?: string,
+    label: string,
     placeholder: string,
     value: string,
     onChangeText: (text: string) => void,
     keyboardType?: any
     secureTextEntry?: boolean,
     onToggleSecureTextEntry?: () => void,
+    autoComplete?: 'cc-csc'| 'cc-exp'| 'cc-exp-day'| 'cc-exp-month'| 'cc-exp-year'| 'cc-number'|'current-password'| 'email'| 'name'| 'new-password'
 }
 
 export default function InputText(props: Props) {
@@ -55,6 +56,7 @@ export default function InputText(props: Props) {
                 onChangeText={props.onChangeText}
                 keyboardType={props.keyboardType}
                 secureTextEntry={props.secureTextEntry}
+                autoComplete={props.autoComplete}
                 style={
                     [
                         styles.input,
