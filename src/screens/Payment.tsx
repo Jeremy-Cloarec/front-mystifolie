@@ -8,8 +8,11 @@ import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation'
-import CardInput from '../components/Input/CardInput'
+import NumCard from '../components/Input/NumCard'
 import NameInput from '../components/Input/NameInput'
+import YearCard from '../components/Input/YearCard'
+import MonthCoard from 'src/components/Input/MonthCard';
+import CvcCard from 'src/components/Input/CvcCard';
 
 const steps = [
     { todo: false, doing: false, done: true },
@@ -32,7 +35,6 @@ const { ids, styles } = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "red",
         padding: 25,
     },
     containerMain: {
@@ -64,16 +66,18 @@ const { ids, styles } = StyleSheet.create({
     containerInputPaiment: {
         flexDirection: 'row',
         gap: 12,
-        backgroundColor: "red",
     }
 })
 
 export default function Payment() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-
-    const [numberCard, onChangeNumberCard] = useState('');
     const [name, onChangeName] = useState('');
+    const [numberCard, onChangeNumberCard] = useState('');
+    const [cscCardNumber, onChangeCscCardNumber] = useState('');
+    const [monthCard, onChangeMonthCard] = useState('');
+    const [yearCard, onChangeYearCard] = useState('');
+    const [error, onChangeError] = useState('');
 
     return (
         <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
@@ -90,29 +94,26 @@ export default function Payment() {
                         name={name}
                         onChangeName={onChangeName}
                     />
-                    <CardInput
+                    <NumCard
                         numberCard={numberCard}
                         onChangeNumberCard={onChangeNumberCard}
                     />
                     <View style={styles.containerInputPaiment}>
-                        <NameInput
-                            name={name}
-                            onChangeName={onChangeName}
+                        <YearCard
+                            YearCard={yearCard}
+                            onChangeYearCard={onChangeYearCard}
                         />
-                        <CardInput
-                            numberCard={numberCard}
-                            onChangeNumberCard={onChangeNumberCard}
+                        <MonthCoard
+                            monthCard={monthCard}
+                            onChangeMonthCard={onChangeMonthCard}
                         />
                     </View>
                     <View style={styles.containerInputPaiment}>
-                        <NameInput
-                            name={name}
-                            onChangeName={onChangeName}
+                        <CvcCard
+                            cscCardNumber={cscCardNumber}
+                            onChangeCscCardNumber={onChangeCscCardNumber}
                         />
-                        <CardInput
-                            numberCard={numberCard}
-                            onChangeNumberCard={onChangeNumberCard}
-                        />
+                        <Text>Les 3 derniers chiffres de votre carte</Text>
                     </View>
                 </View>
                 <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}

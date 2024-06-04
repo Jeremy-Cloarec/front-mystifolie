@@ -24,6 +24,7 @@ export default function EmailInput ({ email, onChangeEmail, error }: EmailInputP
                 value={email}
                 onChangeText={onChangeEmail}
                 keyboardType="email-address"
+                autoComplete='email'
             />
             {error && <Text>{error}</Text>}
         </View>

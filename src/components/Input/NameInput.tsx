@@ -3,7 +3,6 @@ import InputText from './InputText';
 
 const styles = StyleSheet.create({
     inputContainer: {
-        flex:1,
         gap:8
     }
 });
@@ -23,6 +22,7 @@ export default function NameInput ({ name, onChangeName, error }: NameInputProp)
                 value={name}
                 onChangeText={onChangeName}
                 keyboardType="name"
+                autoComplete='name'
             />
             {error && <Text>{error}</Text>}
         </View>

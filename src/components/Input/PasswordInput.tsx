@@ -29,6 +29,7 @@ export default function PasswordInput({ password, onChangePassword, showPassword
                 onChangeText={onChangePassword}
                 secureTextEntry={!showPassword}
                 onToggleSecureTextEntry={toggleShowPassword}
+                autoComplete='current-password'
             />
             {error && <Text>{error}</Text>}
         </View>

@@ -3,18 +3,17 @@ import InputText from './InputText';
 
 const styles = StyleSheet.create({
     inputContainer: {
-        flex:1,
         gap:8
     }
 });
 
-type NameInputProp = {
+type NumCardProp = {
     numberCard: string;
     onChangeNumberCard: (numberCard:string) => void;
     error?: string;
 };
 
-export default function CardInput ({ numberCard, onChangeNumberCard, error }: NameInputProp){
+export default function NumCard ({ numberCard, onChangeNumberCard, error }: NumCardProp){
     return (
         <View style={styles.inputContainer}>
             <InputText
@@ -23,6 +22,7 @@ export default function CardInput ({ numberCard, onChangeNumberCard, error }: Na
                 value={numberCard}
                 onChangeText={onChangeNumberCard}
                 keyboardType="numeric"
+                autoComplete='cc-number'
             />
             {error && <Text>{error}</Text>}
         </View>

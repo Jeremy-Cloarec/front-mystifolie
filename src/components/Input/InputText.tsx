@@ -36,7 +36,8 @@ type Props = {
     keyboardType?: any
     secureTextEntry?: boolean,
     onToggleSecureTextEntry?: () => void,
-    autoComplete?: 'cc-csc'| 'cc-exp'| 'cc-exp-day'| 'cc-exp-month'| 'cc-exp-year'| 'cc-number'|'current-password'| 'email'| 'name'| 'new-password'
+    autoComplete?: 'cc-csc'| 'cc-exp'| 'cc-exp-day'| 'cc-exp-month'| 'cc-exp-year'| 'cc-number'|'current-password'| 'email'| 'name'| 'new-password',
+    onBlur?: () => void
 }
 
 export default function InputText(props: Props) {
@@ -57,6 +58,7 @@ export default function InputText(props: Props) {
                 keyboardType={props.keyboardType}
                 secureTextEntry={props.secureTextEntry}
                 autoComplete={props.autoComplete}
+                onBlur={props.onBlur}
                 style={
                     [
                         styles.input,
