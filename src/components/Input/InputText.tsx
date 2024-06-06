@@ -45,7 +45,7 @@ export default function InputText(props: Props) {
         <View style={styles.inputContainer}>
             <Text
                 nativeID="inputLabel"
-                style={[styles.label, mainStyle.utendoRegular, mainStyle.text]}>
+                style={[styles.label, mainStyle.utendoRegular, mainStyle.text, mainStyle.colorViolet1]}>
                 {props.label}
             </Text>
             <TextInput
@@ -62,8 +62,8 @@ export default function InputText(props: Props) {
                 style={
                     [
                         styles.input,
-                        mainStyle.utendoRegular,
-                        mainStyle.colorDark,
+                        mainStyle.utendoMedium,
+                        mainStyle.colorViolet1,
                         mainStyle.text,
                         Platform.select({
                             web: {

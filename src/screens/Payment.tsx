@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { SetStateAction, useState } from 'react'
 import Stepper from '../components/Stepper/Stepper'
-import { Text, View } from 'react-native'
+import { Text, View, ScrollView } from 'react-native'
 import StyleSheet from 'react-native-media-query'
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { dataStepper } from '../components/Stepper/dataStepper'
 import { mainStyle } from '../mainStyles'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
@@ -10,9 +10,8 @@ import { RootStackParamList } from '../types/navigation'
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation'
 import NumCard from '../components/Input/NumCard'
 import NameInput from '../components/Input/NameInput'
-import YearCard from '../components/Input/YearCard'
-import MonthCoard from 'src/components/Input/MonthCard';
-import CvcCard from 'src/components/Input/CvcCard';
+import ExpirationCard from '../components/Input/ExpirationCard'
+import CvcCard from '../components/Input/CvcCard'
 
 const steps = [
     { todo: false, doing: false, done: true },
@@ -31,17 +30,15 @@ const { ids, styles } = StyleSheet.create({
     container: {
         flex: 1,
     },
-    body: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 25,
-    },
+
     containerMain: {
+        flex: 1,
         paddingHorizontal: 16,
         paddingVertical: 16,
         width: "100%",
         margin: "auto",
+        justifyContent: "center",
+        gap: 16,
         '@media (min-width: 768px)': {
             marginTop: 32,
             marginBottom: 32,
@@ -51,10 +48,9 @@ const { ids, styles } = StyleSheet.create({
         },
     },
     containerMainContent: {
-        flexGrow: 1,
-        justifyContent: 'center',
+        flex: 1,
         width: "100%",
-        gap: 12,
+        gap: 16,
     },
     containerTwoButton: {
         width: "100%",
@@ -76,17 +72,32 @@ export default function Payment() {
     const [numberCard, onChangeNumberCard] = useState('');
     const [cscCardNumber, onChangeCscCardNumber] = useState('');
     const [monthCard, onChangeMonthCard] = useState('');
-    const [yearCard, onChangeYearCard] = useState('');
-    const [error, onChangeError] = useState('');
+
+    const [onValidationError, setOnValidationError] = useState(false);
+
+
+    function validateForm () {
+        return true;
+    }
+
+    const handleNavigation = () => {
+        if (validateForm()) {
+            console.log(name, numberCard, cscCardNumber, monthCard);
+            navigation.navigate('Votre activité');
+        }
+    };
+
 
     return (
-        <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
+        <ScrollView style={[styles.container, mainStyle.bgOrange5, { paddingTop: insets.top }]}>
             <Stepper
                 steps={steps}
                 stepsData={stepsData}
                 indexArray={7}
             />
-            <View style={[styles.body, mainStyle.bgOrange5, styles.containerMain]} dataSet={{ media: ids.containerMain }}>
+            <View
+                style={[styles.containerMain]}
+                dataSet={{ media: ids.containerMain }}>
                 <View
                     style={styles.containerMainContent}
                     dataSet={{ media: ids.containerMainContent }}>
@@ -99,21 +110,14 @@ export default function Payment() {
                         onChangeNumberCard={onChangeNumberCard}
                     />
                     <View style={styles.containerInputPaiment}>
-                        <YearCard
-                            YearCard={yearCard}
-                            onChangeYearCard={onChangeYearCard}
-                        />
-                        <MonthCoard
+                        <ExpirationCard
                             monthCard={monthCard}
                             onChangeMonthCard={onChangeMonthCard}
                         />
-                    </View>
-                    <View style={styles.containerInputPaiment}>
                         <CvcCard
                             cscCardNumber={cscCardNumber}
                             onChangeCscCardNumber={onChangeCscCardNumber}
                         />
-                        <Text>Les 3 derniers chiffres de votre carte</Text>
                     </View>
                 </View>
                 <View style={styles.containerTwoButton} dataSet={{ media: ids.containerTwoButton }}
@@ -124,13 +128,13 @@ export default function Payment() {
                     >
                         <ButtonValidateNavigation
                             name="Valider"
-                            navigation={() => navigation.navigate('Votre activité')}
+                            navigation={handleNavigation}
                             accessibilityLabel="Valider le paiement"
                         />
                     </View>
                 </View>
             </View>
-        </View>
+        </ScrollView>
     )
 }
 

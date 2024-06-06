@@ -34,8 +34,8 @@ type ErrorsData = {
 export default function Connexion() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-    const [email, onChangeEmail] = React.useState('');
-    const [password, onChangePassword] = React.useState('');
+    const [email, onChangeEmail] = useState('');
+    const [password, onChangePassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [errors, setErrors] = useState<ErrorsData>({});
 

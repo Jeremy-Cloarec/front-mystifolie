@@ -13,11 +13,10 @@ const styles = StyleSheet.create({
 type YearCardProp = {
     monthCard: string;
     onChangeMonthCard: (numberCard: string) => void;
-    error?: string;
 };
 
-export default function MonthCoard({ monthCard, onChangeMonthCard, error }: YearCardProp) {
-
+export default function ExpirationCard({ monthCard, onChangeMonthCard}: YearCardProp) {
+    const [error, setError] = useState('');
     const [inputValue, setInputValue] = useState(monthCard);
     const [inputError, setInputError] = useState(error);
 
@@ -43,8 +42,8 @@ export default function MonthCoard({ monthCard, onChangeMonthCard, error }: Year
     return (
         <View style={styles.inputContainer}>
             <InputText
-                label="Mois d'expiration"
-                placeholder="Entrez le mois"
+                label="Date d'expiration"
+                placeholder="MM/YY"
                 value={monthCard}
                 onChangeText={handleChange}
                 onBlur={handleBlur}

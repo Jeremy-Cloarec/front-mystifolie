@@ -7,6 +7,7 @@ const { ids, styles } = StyleSheet.create({
     body: {
         flex:1 ,
         width: "100%",
+        height:"100%",
     },
     containerMain: {
         paddingHorizontal: 16,
@@ -26,6 +27,7 @@ const { ids, styles } = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         width: "100%",
+        gap: 16,
     },
 });
 
