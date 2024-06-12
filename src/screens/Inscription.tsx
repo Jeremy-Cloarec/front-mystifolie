@@ -3,6 +3,7 @@ import { View, Text } from 'react-native'
 import StyleSheet from 'react-native-media-query';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation, NavigationProp } from '@react-navigation/native'
+import axios from 'axios';
 import { RootStackParamList } from '../types/navigation';
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation';
 import NavigationBack from '../components/NavigationBack';
@@ -10,6 +11,7 @@ import Title from '../components/Title';
 import EmailInput from '../components/Input/EmailInput';
 import PasswordInput from '../components/Input/PasswordInput';
 import FormContainer from '../components/Input/FormContainer';
+import NameInput from '../components/Input/NameInput';
 
 const { ids, styles } = StyleSheet.create({
     containerTitle: {
@@ -27,6 +29,7 @@ const { ids, styles } = StyleSheet.create({
 })
 
 type ErrorsData = {
+    name?: string;
     email?: string;
     password?: string;
 };
@@ -34,8 +37,9 @@ type ErrorsData = {
 export default function Connexion() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-    const [email, onChangeEmail] = React.useState('');
-    const [password, onChangePassword] = React.useState('');
+    const [email, onChangeEmail] = useState('');
+    const [name, onChangeName] = useState('');
+    const [password, onChangePassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [errors, setErrors] = useState<ErrorsData>({});
 
@@ -50,6 +54,10 @@ export default function Connexion() {
 
     const validateForm = () => {
         let errors: ErrorsData = {};
+
+        if (!name) {
+            errors.name = "Veuillez renseigner votre nom";
+        }
 
         if (!email) {
             errors.email = "Veuillez renseigner votre email";
@@ -74,7 +82,7 @@ export default function Connexion() {
 
     const handleNavigation = () => {
         if (validateForm()) {
-            console.log(email, password);
+            console.log(email, password, name);
             navigation.navigate('Connection');
         }
     };
@@ -87,6 +95,7 @@ export default function Connexion() {
                     <Title content="S'inscrire" />
                 </View>
                 <View style={styles.containerForm}>
+                    <NameInput name={name} onChangeName={onChangeName} error={errors.name} />
                     <EmailInput email={email} onChangeEmail={onChangeEmail} error={errors.email} />
                     <PasswordInput
                         password={password}

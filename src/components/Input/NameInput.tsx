@@ -3,7 +3,8 @@ import InputText from './InputText';
 
 const styles = StyleSheet.create({
     inputContainer: {
-        gap:8
+        gap:8,
+        width:"100%"
     }
 });
 
