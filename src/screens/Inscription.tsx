@@ -80,10 +80,23 @@ export default function Connexion() {
         setShowPassword(!showPassword);
     };
 
-    const handleNavigation = () => {
+    const handleNavigation = async () => {
         if (validateForm()) {
-            console.log(email, password, name);
-            navigation.navigate('Connection');
+            try {
+                const response = await axios.post('https://0b39-2a01-cb09-d067-a186-2815-f012-ef-8a4d.ngrok-free.app/auth/register', {
+                    nom: name,
+                    mail: email,
+                    mdp: password
+                });
+                if (response.status === 201) {
+                    console.log('Inscription réussie:', response.data);
+                    navigation.navigate('Connection');
+                } else {
+                    console.log('Erreur lors de l\'inscription:', response.data);
+                }
+            } catch (error) {
+                console.error('Erreur lors de l\'inscription:', error);
+            }
         }
     };
 
