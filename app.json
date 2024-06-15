@@ -29,7 +29,8 @@
       "package": "com.iriji.frontmystifolie"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
     },
     "plugins": [
       "expo-font"
@@ -38,6 +39,8 @@
       "eas": {
         "projectId": "928b672c-7338-4f23-a29a-bb067461cc57"
       }
-    }
-  }
+    },
+    "sdkVersion": "51.0.0"
+  },
+  "name": "front-mystifolie"
 }

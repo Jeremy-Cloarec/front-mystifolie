@@ -55,6 +55,7 @@ export default function Connexion() {
     const validateForm = () => {
         let errors: ErrorsData = {};
 
+
         if (!name) {
             errors.name = "Veuillez renseigner votre nom";
         }
@@ -81,9 +82,13 @@ export default function Connexion() {
     };
 
     const handleNavigation = async () => {
+        const apiUrl = process.env.NODE_ENV === 'production'
+            ? process.env.API_URL_PROD + '/auth/register'
+            : process.env.API_URL_DEV + '/auth/register';
+
         if (validateForm()) {
             try {
-                const response = await axios.post('https://0b39-2a01-cb09-d067-a186-2815-f012-ef-8a4d.ngrok-free.app/auth/register', {
+                const response = await axios.post(apiUrl , {
                     nom: name,
                     mail: email,
                     mdp: password
@@ -94,8 +99,10 @@ export default function Connexion() {
                 } else {
                     console.log('Erreur lors de l\'inscription:', response.data);
                 }
-            } catch (error) {
-                console.error('Erreur lors de l\'inscription:', error);
+            } catch (error:any) {
+                console.error('Erreur lors de l\'inscription:', error.response.data.message);
+                let errors: ErrorsData = {};
+                errors.email = "L'email est déjà utilisé";
             }
         }
     };
