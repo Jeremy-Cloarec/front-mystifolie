@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { View, Text } from 'react-native'
 import StyleSheet from 'react-native-media-query';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useNavigation, NavigationProp } from '@react-navigation/native'
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+import axios from 'axios';
 import { RootStackParamList } from '../types/navigation';
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation';
 import NavigationBack from '../components/NavigationBack';
@@ -72,10 +73,30 @@ export default function Connexion() {
         setShowPassword(!showPassword);
     };
 
-    const handleNavigation = () => {
+    const handleNavigation = async () => {
+        const apiUrl = process.env.NODE_ENV === 'production'
+            ? process.env.API_URL_PROD + '/auth/login'
+            : process.env.API_URL_DEV + '/auth/login';
+
         if (validateForm()) {
-            console.log(email, password);
-            navigation.navigate('Commencer');
+            try {
+                const response = await axios.post(apiUrl, {
+                    mail: email,
+                    mdp: password
+                });
+                if (response.status === 200) {
+                    console.log('Connection réussie:', response.data);
+                    navigation.navigate('Commencer');
+                } else {
+                    console.log('Erreur lors de la connexion:', response.data);
+                }
+            } catch (error: any) {
+                console.error('Erreur lors de la connexion:', error.response.data.message);
+                let errors: ErrorsData = {};
+                errors.password = "Le mot de passe est incorrect";
+                errors.email = "L'email est incorrect";
+                setErrors(errors);
+            }
         }
     };
 

@@ -55,7 +55,6 @@ export default function Connexion() {
     const validateForm = () => {
         let errors: ErrorsData = {};
 
-
         if (!name) {
             errors.name = "Veuillez renseigner votre nom";
         }
@@ -103,6 +102,7 @@ export default function Connexion() {
                 console.error('Erreur lors de l\'inscription:', error.response.data.message);
                 let errors: ErrorsData = {};
                 errors.email = "L'email est déjà utilisé";
+                setErrors(errors);
             }
         }
     };
