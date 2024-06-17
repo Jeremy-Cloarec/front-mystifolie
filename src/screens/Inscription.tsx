@@ -82,8 +82,8 @@ export default function Connexion() {
 
     const handleNavigation = async () => {
         const apiUrl = process.env.NODE_ENV === 'development'
-            ? process.env.API_URL_DEV + '/auth/login'
-            : process.env.API_URL_PROD + '/auth/login'
+            ? process.env.API_URL_DEV + '/auth/register'
+            : process.env.API_URL_PROD + '/auth/register'
 
         if (validateForm()) {
             try {
