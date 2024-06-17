@@ -81,13 +81,13 @@ export default function Connexion() {
     };
 
     const handleNavigation = async () => {
-        const apiUrl = process.env.NODE_ENV === 'production'
-            ? 'https://lit-tundra-42197-e1dd083f6dd8.herokuapp.com/auth/register'
-            : process.env.API_URL_DEV + '/auth/register';
+        const apiUrl = process.env.NODE_ENV === 'development'
+            ? process.env.API_URL_DEV + '/auth/login'
+            : process.env.API_URL_PROD + '/auth/login'
 
         if (validateForm()) {
             try {
-                const response = await axios.post(apiUrl , {
+                const response = await axios.post(apiUrl, {
                     nom: name,
                     mail: email,
                     mdp: password
@@ -98,7 +98,7 @@ export default function Connexion() {
                 } else {
                     console.log('Erreur lors de l\'inscription:', response.data);
                 }
-            } catch (error:any) {
+            } catch (error: any) {
                 console.error('Erreur lors de l\'inscription:', error.response.data.message);
                 let errors: ErrorsData = {};
                 errors.email = "L'email est déjà utilisé";
