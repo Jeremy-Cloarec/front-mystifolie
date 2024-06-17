@@ -82,7 +82,7 @@ export default function Connexion() {
 
     const handleNavigation = async () => {
         const apiUrl = process.env.NODE_ENV === 'production'
-            ? process.env.API_URL_PROD + '/auth/register'
+            ? 'https://lit-tundra-42197-e1dd083f6dd8.herokuapp.com/auth/register'
             : process.env.API_URL_DEV + '/auth/register';
 
         if (validateForm()) {
