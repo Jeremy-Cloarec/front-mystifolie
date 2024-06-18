@@ -7,7 +7,6 @@ import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { RootStackParamList } from '../types/navigation'
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation';
 import NavigationBack from '../components/NavigationBack';
-import Title from '../components/Title';
 
 const { ids, styles } = StyleSheet.create({
     container: {
@@ -48,6 +47,7 @@ const { ids, styles } = StyleSheet.create({
 })
 
 export default function Begin() {
+
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 

@@ -9,6 +9,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
+    "ngrok": "node ./start-ngrok.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
@@ -40,6 +41,7 @@
     "@expo/metro-runtime": "~3.2.1",
     "@expo/vector-icons": "^14.0.2",
     "@preflower/react-native-web-maps": "^0.2.0",
+    "@react-native-async-storage/async-storage": "^1.23.1",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
     "@teovilla/react-native-web-maps": "^0.9.5",
@@ -50,6 +52,7 @@
     "expo-status-bar": "~1.12.1",
     "jest": "^29.4.0",
     "jest-expo": "~51.0.1",
+    "ngrok": "^5.0.0-beta.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.74.1",

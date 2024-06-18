@@ -8,6 +8,7 @@ import { RootStackParamList } from '../types/navigation'
 import ButtonValidateNavigation from '../components/Buttons/ButtonValidateNavigation';
 import NavigationBack from '../components/NavigationBack';
 import Title from '../components/Title';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const { ids, styles } = StyleSheet.create({
     container: {
@@ -50,6 +51,10 @@ export default function WhatDoYouWant() {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
+    const handleLogout = async () => {
+        await AsyncStorage.removeItem('jwtToken');        
+        navigation.navigate('Connection');
+    }
     return (
         <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
             <NavigationBack />
@@ -79,7 +84,7 @@ export default function WhatDoYouWant() {
                     >
                         <ButtonValidateNavigation
                             name="Se connecter"
-                            navigation={() => navigation.navigate('Connection')}
+                            navigation={handleLogout}
                             accessibilityLabel="Se connecter"
                         />
                     </View>

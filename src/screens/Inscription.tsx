@@ -125,7 +125,7 @@ export default function Connexion() {
                         error={errors.password}
                     />
                     <ButtonValidateNavigation
-                        name="Se connecter"
+                        name="S'inscrire"
                         navigation={handleNavigation}
                         accessibilityLabel="Valider l'inscription'"
                     />

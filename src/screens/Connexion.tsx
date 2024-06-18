@@ -11,6 +11,7 @@ import Title from '../components/Title';
 import EmailInput from '../components/Input/EmailInput';
 import PasswordInput from '../components/Input/PasswordInput';
 import FormContainer from '../components/Input/FormContainer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const { ids, styles } = StyleSheet.create({
     containerTitle: {
@@ -76,7 +77,7 @@ export default function Connexion() {
     const handleNavigation = async () => {
         const apiUrl = process.env.NODE_ENV === 'development'
             ? process.env.API_URL_DEV + '/auth/login'
-            : process.env.API_URL_PROD + '/auth/login' 
+            : process.env.API_URL_PROD + '/auth/login'
 
         if (validateForm()) {
             try {
@@ -84,7 +85,14 @@ export default function Connexion() {
                     mail: email,
                     mdp: password
                 });
+
+                console.log('Response:', response);
+
+
                 if (response.status === 200) {
+                    const token = response.data.token;
+                    await AsyncStorage.setItem('token', token);
+                    console.log('Connection OK:', token);
                     console.log('Connection réussie:', response.data);
                     navigation.navigate('Commencer');
                 } else {
